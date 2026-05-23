@@ -1,7 +1,7 @@
 # movensis LLM Interface
 
-한국어 자연어 명령을 로봇 제어 함수로 변환하는 LLM 기반 인터페이스입니다.
-파인튜닝된 Qwen2.5-7B LoRA 모델이 명령을 해석하고, ROS2 Action Server를 통해 로봇에 전달합니다.
+모델: Qwen2.5-7B LoRA 
+ROS2 Action Server로 전달
 
 ## 구조
 
