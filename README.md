@@ -22,12 +22,13 @@ ros2_ws/src/robot_interfaces/
 
 ```bash
 conda env create -f environment.yml
-conda activate movensis_llm
+conda activate movensis-llm
 ```
 
 ### 2. ROS2 패키지 빌드
 
 ```bash
+source /opt/ros/humble/setup.bash
 cd ros2_ws
 colcon build
 source install/setup.bash
@@ -36,13 +37,17 @@ source install/setup.bash
 ### 3. Action 서버 실행 (터미널 1)
 
 ```bash
-python ros2_ws/src/robot_interfaces/robot_action_server.py
+source /opt/ros/humble/setup.bash
+source ros2_ws/install/setup.bash
+python3 ros2_ws/src/robot_interfaces/robot_action_server.py
 ```
 
 ### 4. 대화형 인터페이스 실행 (터미널 2)
 
 ```bash
-python model/chat.py
+source /opt/ros/humble/setup.bash
+source ros2_ws/install/setup.bash
+python3 model/chat.py
 ```
 
 ## 동작 흐름
@@ -88,4 +93,4 @@ python model/chat.py
 - ROS2 (Humble 이상)
 - Ollama (`qwen2.5:7b` 모델 필요)
 - PyTorch, transformers, peft, bitsandbytes
-- LoRA 가중치: `model/qwen-robot/adapter_model.safetensors` (별도 보관)
+- LoRA 가중치: [sugarpepper99/qwen-robot-lora](https://huggingface.co/sugarpepper99/qwen-robot-lora) (Hugging Face Hub에서 자동 다운로드)
