@@ -1,43 +1,91 @@
-# MPC prototype (Python)
+# movensis LLM Interface
 
-간단한 로컬 프로토타입: conda 환경 생성 후 FastAPI 서버를 실행하고 예제 템플릿으로 동작을 확인합니다.
+한국어 자연어 명령을 로봇 제어 함수로 변환하는 LLM 기반 인터페이스입니다.
+파인튜닝된 Qwen2.5-7B LoRA 모델이 명령을 해석하고, ROS2 Action Server를 통해 로봇에 전달합니다.
 
-환경 생성:
+## 구조
+
+```
+model/
+  chat.py                          # 대화형 메인 인터페이스
+  qwen-robot/                      # LoRA 어댑터 (tokenizer 설정)
+ros2_ws/src/robot_interfaces/
+  robot_action_server.py           # ROS2 Action Server
+  ros2_bridge.py                   # chat.py → ROS2 연결 브릿지
+  action/RobotCommand.action       # Action 인터페이스 정의
+  CMakeLists.txt / package.xml
+```
+
+## 실행 방법
+
+### 1. 환경 설정
 
 ```bash
 conda env create -f environment.yml
 conda activate mpc-project
 ```
 
-
-서버 실행 (터미널 1):
-
-```bash
-conda activate mpc-project
-uvicorn mcp_server.server:app --reload
-```
-
-UI 실행 (터미널 2 — 입력창 역할):
+### 2. ROS2 패키지 빌드
 
 ```bash
-python ui/cli_ui.py
+cd ros2_ws
+colcon build
+source install/setup.bash
 ```
 
-
-이 프로젝트는 단일 템플릿 `MobileRobot_Sequence`를 기본으로 사용합니다. UI와 스크립트는 이 템플릿을 자동으로 참조합니다.
-
-예제 사용법:
-- 서버: 
+### 3. Action 서버 실행 (터미널 1)
 
 ```bash
-uvicorn mcp_server.server:app --reload
+python ros2_ws/src/robot_interfaces/robot_action_server.py
 ```
-- UI(REPL):
+
+### 4. 대화형 인터페이스 실행 (터미널 2)
 
 ```bash
-python ui/cli_ui.py
+python model/chat.py
 ```
 
-UI에서 `command`에 로봇 시퀀스를 지시하는 자유형 텍스트를 입력하고(예: "move forward 5m; turn left; pick up object"), `meta`에 추가 데이터가 필요하면 JSON으로 전달하세요 (`{"values":[...]]}` 등).
+## 동작 흐름
 
-메모: 흐름 요약 — UI에서 입력 → 서버의 `/run_command` 호출 → (1) 템플릿에 선언된 MCP 연산이 있으면 `mcp_server.runner`가 연산을 시뮬레이션하여 결과를 `meta[\"mcp_results\"]`에 추가합니다. (2) `mcp_server.llm_client`가 LLM(또는 mock)을 호출해 템플릿에 맞는 JSON 아웃풋을 생성해 반환합니다.
+```
+사용자 입력 (한국어)
+    ↓
+입력 분류 (Ollama qwen2.5:7b)
+    ├─ 일반 대화 → 한국어 응답 반환
+    └─ 로봇 명령 → LoRA 모델이 JSON 배열로 변환
+                        ↓
+                 사용자 확인 / 수정
+                        ↓
+                 ros2_bridge → ROS2 Action Server
+                        ↓
+                    로봇 실행
+```
+
+## 사용 가능한 로봇 명령
+
+| 함수 | 설명 |
+|------|------|
+| `navigate_to('A')` | 구역 이동 (A~F) |
+| `move_forward(2.0)` | 앞으로 이동 (미터) |
+| `move_backward(1.5)` | 뒤로 이동 (미터) |
+| `turn('left', 90)` | 회전 |
+| `pick_up('cup')` | 물체 집기 |
+| `put_down('cup')` | 물체 내려놓기 |
+| `place_at('B')` | 특정 구역에 놓기 |
+| `take_photo()` | 사진 촬영 |
+| `record_video(30)` | 영상 녹화 (초) |
+| `scan_area()` | 360도 스캔 |
+| `detect_object('cup')` | 물체 탐지 |
+| `return_to_base()` | 기지 복귀 |
+| `stop()` | 긴급 정지 |
+| `wait(5)` | 대기 (초) |
+| `report_status()` | 상태 보고 |
+| `charge()` | 충전 |
+
+## 의존성
+
+- Python 3.10+
+- ROS2 (Humble 이상)
+- Ollama (`qwen2.5:7b` 모델 필요)
+- PyTorch, transformers, peft, bitsandbytes
+- LoRA 가중치: `model/qwen-robot/adapter_model.safetensors` (별도 보관)
