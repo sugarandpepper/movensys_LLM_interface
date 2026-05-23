@@ -1,0 +1,298 @@
+{"instruction": "F구역으로 이동해서 사진 찍어와", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "A구역에서 박스를 B구역으로 옮겨주세요", "output": ["navigate_to('A')", "pick_up('box')", "navigate_to('B')", "put_down('box')"]}
+{"instruction": "E구역을 스캔하고 책이 있는지 탐지해 사진 찍어", "output": ["navigate_to('E')", "scan_area()", "detect_object('book')", "take_photo()"]}
+{"instruction": "B구역을 스캔하고 상태를 보고해", "output": ["navigate_to('B')", "scan_area()", "report_status()"]}
+{"instruction": "즉시 긴급정지 후 기지로 복귀해", "output": ["stop()", "return_to_base()"]}
+{"instruction": "F구역으로 이동해서 가방을 C구역에 놓고 와", "output": ["navigate_to('F')", "pick_up('bag')", "navigate_to('C')", "place_at('C')", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 20초 동안 영상 녹화하고 복귀해", "output": ["navigate_to('E')", "record_video(20)", "return_to_base()"]}
+{"instruction": "C구역으로 가서 왼쪽으로 90도 회전한 후 앞으로 1.5미터 이동해", "output": ["navigate_to('C')", "turn('left', 90)", "move_forward(1.5)"]}
+{"instruction": "E구역으로 이동해서 식물을 촬영해", "output": ["navigate_to('E')", "take_photo()"]}
+{"instruction": "A구역에서 등이 켜진 상태의 램프를 집어서 E구역에 옮겨보자", "output": ["navigate_to('A')", "pick_up('lamp')", "navigate_to('E')", "put_down('lamp')"]}
+{"instruction": "A구역에서 스캔하고 사진 찍어", "output": ["navigate_to('A')", "scan_area()", "take_photo()"]}
+{"instruction": "A구역을 스캔하고 상태 보고해", "output": ["navigate_to('A')", "scan_area()", "report_status()"]}
+{"instruction": "F구역에서 긴급 정지하고 기지로 복귀해", "output": ["navigate_to('F')", "stop()", "return_to_base()"]}
+{"instruction": "C구역으로 이동해 노트북을 집고 D구역에서 사진 찍은 후 복귀해", "output": ["navigate_to('C')", "pick_up('notebook')", "navigate_to('D')", "take_photo()", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 20초 동안 영상 녹화해", "output": ["navigate_to('E')", "record_video(20)"]}
+{"instruction": "왼쪽으로 90도 회전하고 앞으로 2미터 이동해", "output": ["turn('left', 90)", "move_forward(2.0)"]}
+{"instruction": "F구역으로 이동해서 사진 찍어와", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "C구역의 카드를 집어서 F구역에 놓아주세요", "output": ["navigate_to('C')", "pick_up('card')", "navigate_to('F')", "put_down('card')"]}
+{"instruction": "C구역을 스캔하고 열쇠를 탐지하면 사진 찍어", "output": ["navigate_to('C')", "scan_area()", "detect_object('key')", "take_photo()"]}
+{"instruction": "F구역을 스캔하고 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
+{"instruction": "F구역에서 즉시 정지하고 기지로 복귀해", "output": ["stop()", "return_to_base()"]}
+{"instruction": "B구역에서 박스를 들고 D구역으로 이동해서 사진 찍은 후 복귀해", "output": ["navigate_to('B')", "pick_up('box')", "navigate_to('D')", "take_photo()", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 45초 동안 영상 녹화하고 복귀해", "output": ["navigate_to('E')", "record_video(45)", "return_to_base()"]}
+{"instruction": "90도 왼쪽으로 회전하고, 그 이후 앞으로 1.5미터 이동해", "output": ["turn('left', 90)", "move_forward(1.5)"]}
+{"instruction": "F구역으로 이동해서 사진 찍어와", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "A구역의 가방을 C구역으로 옮겨줘", "output": ["navigate_to('A')", "pick_up('bag')", "navigate_to('C')", "put_down('bag')"]}
+{"instruction": "E구역에서 스캔한 후 카페트 위의 의자를 찾아 사진 찍어", "output": ["navigate_to('E')", "scan_area()", "detect_object('chair')", "take_photo()"]}
+{"instruction": "F구역을 스캔하고 상태 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
+{"instruction": "F구역에서 긴급정지 후 기지 복귀해", "output": ["navigate_to('F')", "stop()", "return_to_base()"]}
+{"instruction": "F구역에서 램프를 C구역으로 옮기고 사진 찍고 돌아와", "output": ["navigate_to('F')", "pick_up('lamp')", "navigate_to('C')", "put_down('lamp')", "take_photo()", "return_to_base()"]}
+{"instruction": "F구역으로 이동해서 20초 동안 영상 녹화해", "output": ["navigate_to('F')", "record_video(20)"]}
+{"instruction": "왼쪽으로 90도 회전한 후 앞으로 2.0m 이동해", "output": ["turn('left', 90)", "move_forward(2.0)"]}
+{"instruction": "E구역으로 이동해서 사진 찍어와", "output": ["navigate_to('E')", "take_photo()"]}
+{"instruction": "C구역의 노트북을 D구역에 놓아줘", "output": ["navigate_to('C')", "pick_up('notebook')", "navigate_to('D')", "put_down('notebook')"]}
+{"instruction": "E구역에서 스캔해서 객체 탐지 후 사진 찍어", "output": ["navigate_to('E')", "scan_area()", "detect_object('umbrella')", "take_photo()"]}
+{"instruction": "A구역을 스캔하고 상태를 보고해", "output": ["navigate_to('A')", "scan_area()", "report_status()"]}
+{"instruction": "C구역에서 정지하거나 기지로 복귀하라", "output": ["navigate_to('C')", "stop()", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 카드를 촬영하고 복귀해", "output": ["navigate_to('E')", "take_photo()", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 20초 동안 영상 녹화하고 복귀해", "output": ["navigate_to('E')", "record_video(20)", "return_to_base()"]}
+{"instruction": "왼쪽으로 90도 회전한 후 앞으로 2.0m 이동해", "output": ["turn('left', 90)", "move_forward(2.0)"]}
+{"instruction": "F구역으로 이동해서 사진 찍어와", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "A구역의 박스를 C구역으로 옮겨주세요", "output": ["navigate_to('A')", "pick_up('box')", "navigate_to('C')", "put_down('box')"]}
+{"instruction": "F구역에서 책을 탐지하거나 스캔한 후 사진 찍어", "output": ["navigate_to('F')", "detect_object('book')", "take_photo()"]}
+{"instruction": "B구역을 스캔하고 상태를 보고해", "output": ["navigate_to('B')", "scan_area()", "report_status()"]}
+{"instruction": "즉시 정지를 하고 B구역으로 복귀해", "output": ["stop()", "return_to_base()"]}
+{"instruction": "E구역으로 이동하고 주변을 촬영한 후 가방을 찾아 집어 와서 기지로 복귀", "output": ["navigate_to('E')", "take_photo()", "detect_object('bag')", "pick_up('bag')", "return_to_base()"]}
+{"instruction": "F구역으로 이동해서 20초 동안 영상을 녹화해", "output": ["navigate_to('F')", "record_video(20)"]}
+{"instruction": "왼쪽으로 90도 회전하고 앞으로 1.5m 이동해", "output": ["turn('left', 90)", "move_forward(1.5)"]}
+{"instruction": "F구역으로 이동해서 식물 사진을 찍어", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "A구역의 lamppost를 G구역에 놓아줘", "output": ["navigate_to('A')", "pick_up('lamp')", "navigate_to('G')", "put_down('lamp')"]}
+{"instruction": "C구역을 스캔하고 기기 탐지 후 사진 찍어", "output": ["navigate_to('C')", "scan_area()", "detect_object('phone')", "take_photo()"]}
+{"instruction": "F구역을 스캔하고 상태 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
+{"instruction": "F구역에서 긴급 정지하고 기지로 복귀해", "output": ["navigate_to('F')", "stop()", "return_to_base()"]}
+{"instruction": "C구역으로 이동해서 노트북을 집고 사진 찍고 B구역에 놓아서 기지로 복귀해", "output": ["navigate_to('C')", "pick_up('notebook')", "take_photo()", "navigate_to('B')", "put_down('notebook')", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 20초 동안 영상 녹화하고 복귀해", "output": ["navigate_to('E')", "record_video(20)", "return_to_base()"]}
+{"instruction": "90도 왼쪽으로 회전하고 앞으로 1.5m 이동해", "output": ["turn('left', 90)", "move_forward(1.5)"]}
+{"instruction": "F구역으로 이동해서 사진 찍어와", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "A구역의 카드를 가져와 C구역에 놓아줘", "output": ["pick_up('card')", "navigate_to('C')", "put_down('card')"]}
+{"instruction": "F구역에서 물체 탐지하고 사진 찍어", "output": ["navigate_to('F')", "detect_object('key')", "take_photo()"]}
+{"instruction": "C구역을 스캔하고 상태 보고해", "output": ["navigate_to('C')", "scan_area()", "report_status()"]}
+{"instruction": "F구역에서 긴급 정지 후 기지 복귀", "output": ["navigate_to('F')", "stop()", "return_to_base()"]}
+{"instruction": "C구역으로 이동해서 사진을 찍고 박스를 들여 B구역으로 이동해", "output": ["navigate_to('C')", "take_photo()", "pick_up('box')", "navigate_to('B')", "place_at('B')"]}
+{"instruction": "E구역에서 책을 들고 30초 동안 영상 녹화하고 복귀해", "output": ["navigate_to('E')", "pick_up('book')", "record_video(30)", "return_to_base()"]}
+{"instruction": "90도 왼쪽으로 회전하고 2미터 앞으로 이동해", "output": ["turn('left', 90)", "move_forward(2.0)"]}
+{"instruction": "E구역으로 이동해서 사진 찍어와", "output": ["navigate_to('E')", "take_photo()"]}
+{"instruction": "C구역의 가방을 D구역으로 이동해", "output": ["navigate_to('C')", "pick_up('bag')", "navigate_to('D')", "put_down('bag')"]}
+{"instruction": "F구역에서 오브젝트 탐지하고 사진 찍어와", "output": ["navigate_to('F')", "detect_object('chair')", "take_photo()"]}
+{"instruction": "F구역을 스캔하고 상태를 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
+{"instruction": "F구역으로 이동하다가 박스를 집은 후 긴급 정지하고 기지로 복귀", "output": ["navigate_to('F')", "pick_up('box')", "stop()", "return_to_base()"]}
+{"instruction": "F구역으로 이동해서 테이블 위의 등불을 촬영하고 집어와", "output": ["navigate_to('F')", "take_photo()", "pick_up('lamp')", "return_to_base()"]}
+{"instruction": "F구역으로 이동해서 영상 녹화해", "output": ["navigate_to('F')", "record_video(30)"]}
+{"instruction": "오른쪽으로 90도 회전하고 2미터 앞으로 이동해", "output": ["turn('right', 90)", "move_forward(2.0)"]}
+{"instruction": "E구역으로 이동해서 사진 찍어와", "output": ["navigate_to('E')", "take_photo()"]}
+{"instruction": "A구역의 노트북을 C구역에 놓아주세요", "output": ["navigate_to('A')", "pick_up('notebook')", "navigate_to('C')", "put_down('notebook')"]}
+{"instruction": "F구역에서 스캔해보고 우산을 탐지하면 사진 찍어", "output": ["navigate_to('F')", "scan_area()", "detect_object('umbrella')", "take_photo()"]}
+{"instruction": "F구역을 스캔하고 상태 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
+{"instruction": "F구역에서 즉시 정지하거나 기지로 복귀", "output": ["navigate_to('F')", "stop()", "return_to_base()"]}
+{"instruction": "C구역으로 이동해서 카드 집어와 그리고 D구역으로 가져가서 기지 복귀", "output": ["navigate_to('C')", "pick_up('card')", "navigate_to('D')", "put_down('card')", "return_to_base()"]}
+{"instruction": "E구역에서 20초 동안 영상을 녹화해", "output": ["navigate_to('E')", "record_video(20)"]}
+{"instruction": "90도 왼쪽으로 회전한 후 앞으로 2미터 이동해", "output": ["turn('left', 90)", "move_forward(2.0)"]}
+{"instruction": "E구역으로 이동해서 사진 찍어와", "output": ["navigate_to('E')", "take_photo()"]}
+{"instruction": "C구역의 박스를 E구역에 넣어주세요", "output": ["navigate_to('C')", "pick_up('box')", "navigate_to('E')", "put_down('box')"]}
+{"instruction": "C구역에서 책을 탐지하거나 스캔한 후 사진 찍어와", "output": ["navigate_to('C')", "detect_object('book')", "take_photo()"]}
+{"instruction": "구역을 스캔하고 상태를 보고해", "output": ["scan_area()", "report_status()"]}
+{"instruction": "F구역에서 밸스 집어서 긴급정지 후 기지 복귀", "output": ["navigate_to('F')", "pick_up('ball')", "stop()", "return_to_base()"]}
+{"instruction": "F구역에서 가방을 B구역으로 가져와 사진 찍히게", "output": ["navigate_to('F')", "pick_up('bag')", "navigate_to('B')", "take_photo()", "put_down('bag')", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 20초 동안 영상을 녹화해", "output": ["navigate_to('E')", "record_video(20)"]}
+{"instruction": "왼쪽으로 90도 회전한 후 앞으로 2미터 이동해", "output": ["turn('left', 90)", "move_forward(2.0)"]}
+{"instruction": "F구역으로 이동해서 식물을 찍어와", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "B구역의 램프를 C구역으로 옮겨줘", "output": ["navigate_to('B')", "pick_up('lamp')", "navigate_to('C')", "put_down('lamp')"]}
+{"instruction": "F구역에서 객체 탐지하고 사진 촬영", "output": ["navigate_to('F')", "detect_object('phone')", "take_photo()"]}
+{"instruction": "F구역을 스캔하고 상태를 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
+{"instruction": "F구역으로 이동하다가 긴급 정지 후 기지로 복귀해", "output": ["navigate_to('F')", "stop()", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 노트북을 촬영하고, C구역으로 이동해 다시 집어서 기지로 복귀해", "output": ["navigate_to('E')", "take_photo()", "navigate_to('C')", "pick_up('notebook')", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 20초 동안 영상 녹화해", "output": ["navigate_to('E')", "record_video(20)"]}
+{"instruction": "오른쪽으로 90도 회전하고 앞으로 2미터 이동해", "output": ["turn('right', 90)", "move_forward(2.0)"]}
+{"instruction": "F구역으로 이동해서 사진 찍어와", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "A구역의 카드를 C구역에 놓아줘", "output": ["navigate_to('A')", "pick_up('card')", "navigate_to('C')", "put_down('card')"]}
+{"instruction": "E구역으로 이동해서 물체 탐지하고 사진 찍어", "output": ["navigate_to('E')", "detect_object('key')", "take_photo()"]}
+{"instruction": "F구역을 스캔하고 상태를 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
+{"instruction": "즉시 긴급정지를 하고 기지로 복귀해", "output": ["stop()", "return_to_base()"]}
+{"instruction": "A구역으로 이동해서 박스를 카메라로 찍은 후 B구역으로 이동해", "output": ["navigate_to('A')", "pick_up('box')", "take_photo()", "navigate_to('B')", "put_down('box')"]}
+{"instruction": "E구역으로 이동해서 45초 동안 영상 녹화해", "output": ["navigate_to('E')", "record_video(45)"]}
+{"instruction": "왼쪽으로 90도 회전하고 2미터 앞으로 이동해", "output": ["turn('left', 90)", "move_forward(2.0)"]}
+{"instruction": "F구역으로 이동해서 사진 찍어와", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "A구역의 가방을 C구역에 놓아줘", "output": ["navigate_to('A')", "pick_up('bag')", "navigate_to('C')", "put_down('bag')"]}
+{"instruction": "E구역에서 스캔하고 소파를 탐지한 후 사진 찍어", "output": ["navigate_to('E')", "scan_area()", "detect_object('chair')", "take_photo()"]}
+{"instruction": "구역을 스캔하고 상태를 보고해", "output": ["scan_area()", "report_status()"]}
+{"instruction": "즉시 긴급정지 후 기지로 복귀해", "output": ["stop()", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 램프 찾고 사진 찍어서 복귀해", "output": ["navigate_to('E')", "detect_object('lamp')", "take_photo()", "return_to_base()"]}
+{"instruction": "E구역에서 20초 동안 영상을 녹화해", "output": ["navigate_to('E')", "record_video(20)"]}
+{"instruction": "오른쪽으로 90도 회전하고 2미터 앞으로 이동", "output": ["turn('right', 90)", "move_forward(2.0)"]}
+{"instruction": "F구역으로 이동해서 사진 찍어와", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "A구역 노트북을 C구역으로 옮겨줘", "output": ["navigate_to('A')", "pick_up('notebook')", "navigate_to('C')", "put_down('notebook')"]}
+{"instruction": "F구역을 탐색하고 우mbrella을 찾은 후 사진 찍기", "output": ["navigate_to('F')", "scan_area()", "detect_object('umbrella')", "take_photo()"]}
+{"instruction": "F구역을 스캔하고 상태 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
+{"instruction": "F구역으로 이동하다가 긴급 정지 후 기지 복귀", "output": ["navigate_to('F')", "stop()", "return_to_base()"]}
+{"instruction": "F구역으로 이동해서 60초 동안 영상을 녹화해", "output": ["navigate_to('F')", "record_video(60)"]}
+{"instruction": "우선 오른쪽으로 45도 회전해", "output": ["turn('right', 45)", "move_forward(0.5)"]}
+{"instruction": "F구역으로 이동해서 사진 찍어와", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "C구역의 박스를 E구역에 놓아주세요", "output": ["navigate_to('C')", "pick_up('box')", "navigate_to('E')", "put_down('box')"]}
+{"instruction": "B구역에서 책을 탐지하거나 스캔한 후 사진 찍어와", "output": ["navigate_to('B')", "detect_object('book')", "take_photo()"]}
+{"instruction": "구역을 스캔하고 상태를 보고해", "output": ["scan_area()", "report_status()"]}
+{"instruction": "즉시 정지를 해줘", "output": ["stop()"]}
+{"instruction": "E구역으로 이동해서 가방을 찾고 사진 찍어 Coming Home라는 폴더에 저장하고 복귀해", "output": ["navigate_to('E')", "detect_object('bag')", "take_photo()", "report_status()", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 45초 동안 영상 녹화해", "output": ["navigate_to('E')", "record_video(45)"]}
+{"instruction": "90도 왼쪽으로 회전하고 2미터 앞으로 이동해", "output": ["turn('left', 90)", "move_forward(2.0)"]}
+{"instruction": "E구역으로 이동해서 식물 사진 찍어오세요", "output": ["navigate_to('E')", "take_photo()"]}
+{"instruction": "A구역의 램프를 C구역으로 옮겨줘", "output": ["navigate_to('A')", "pick_up('lamp')", "navigate_to('C')", "put_down('lamp')"]}
+{"instruction": "E구역을 탐색하고 캠ERA를 찾아 사진 찍어와", "output": ["navigate_to('E')", "scan_area()", "detect_object('phone')", "take_photo()"]}
+{"instruction": "F구역을 스캔하고 상태 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
+{"instruction": "F구역에서 긴급 정지하고 기지로 복귀해", "output": ["navigate_to('F')", "stop()", "return_to_base()"]}
+{"instruction": "C구역으로 이동해서 노트북을 빼서 D구역에 두고 나중에 복귀해", "output": ["navigate_to('C')", "pick_up('notebook')", "navigate_to('D')", "place_at('D')", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 20초 동안 영상 녹화해", "output": ["navigate_to('E')", "record_video(20)"]}
+{"instruction": "왼쪽으로 90도 회전하고 앞으로 2미터 이동해", "output": ["turn('left', 90)", "move_forward(2.0)"]}
+{"instruction": "F구역으로 이동해서 사진 찍어와", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "C구역의 카드를pickup하고 D구역으로 옮겨주세요", "output": ["navigate_to('C')", "pick_up('card')", "navigate_to('D')", "put_down('card')"]}
+{"instruction": "F구역에서 물체 탐지 후 사진 찍어와", "output": ["navigate_to('F')", "detect_object('key')", "take_photo()"]}
+{"instruction": "E구역을 스캔하고 상태를 보고해", "output": ["navigate_to('E')", "scan_area()", "report_status()"]}
+{"instruction": "F구역에서 긴급 정지 후 기지로 복귀해", "output": ["navigate_to('F')", "stop()", "return_to_base()"]}
+{"instruction": "C구역으로 이동해서 박스를 찾아 사진 찍고 집어 C구역에 다시 놓아", "output": ["navigate_to('C')", "detect_object('box')", "take_photo()", "pick_up('box')", "place_at('C')", "put_down('box')"]}
+{"instruction": "F구역으로 이동해서 60초 동안 영상 녹화해", "output": ["navigate_to('F')", "record_video(60)"]}
+{"instruction": "오른쪽으로 90도 회전한 후 앞으로 2.5m 이동", "output": ["turn('right', 90)", "move_forward(2.5)"]}
+{"instruction": "F구역으로 이동해서 사진 찍어와", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "C구역의 가방을 E구역으로 가져가세요", "output": ["navigate_to('C')", "pick_up('bag')", "navigate_to('E')", "put_down('bag')"]}
+{"instruction": "F구역에서 객체 탐지하고 사진 찍어", "output": ["navigate_to('F')", "detect_object('chair')", "take_photo()"]}
+{"instruction": "F구역을 스캔하고 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
+{"instruction": "즉시 긴급정지하고 기지로 복귀해", "output": ["stop()", "return_to_base()"]}
+{"instruction": "C구역으로 이동해서 조명을 집고 사진 찍어 뒤로 돌아와", "output": ["navigate_to('C')", "pick_up('lamp')", "take_photo()", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 20초 동안 영상 녹화해", "output": ["navigate_to('E')", "record_video(20)"]}
+{"instruction": "오른쪽으로 90도 회전하고 앞으로 2미터 이동해", "output": ["turn('right', 90)", "move_forward(2.0)"]}
+{"instruction": "E구역으로 이동해서 사진 찍어와", "output": ["navigate_to('E')", "take_photo()"]}
+{"instruction": "A구역의 노트북을 C구역에 놓아주세요", "output": ["navigate_to('A')", "pick_up('notebook')", "navigate_to('C')", "put_down('notebook')"]}
+{"instruction": "E구역을 스캔한 후 우산을 탐지하고 사진 찍어", "output": ["navigate_to('E')", "scan_area()", "detect_object('umbrella')", "take_photo()"]}
+{"instruction": "A구역을 스캔하고 상태 보고해", "output": ["navigate_to('A')", "scan_area()", "report_status()"]}
+{"instruction": "F구역에서 즉시 정지하거나 기지로 복귀해", "output": ["navigate_to('F')", "stop()", "return_to_base()"]}
+{"instruction": "F구역으로 이동해서 카드를 집고 사진 찍은 후 복귀해", "output": ["navigate_to('F')", "pick_up('card')", "take_photo()", "return_to_base()"]}
+{"instruction": "F구역으로 이동해서 60초 동안 영상 녹화해", "output": ["navigate_to('F')", "record_video(60)"]}
+{"instruction": "반시계 방향으로 90도 회전한 후 앞으로 2.0m 이동해", "output": ["turn('left', 90)", "move_forward(2.0)"]}
+{"instruction": "F구역으로 이동해서 사진 찍어와", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "C구역의 박스를 E구역으로 옮겨줘", "output": ["navigate_to('C')", "pick_up('box')", "navigate_to('E')", "put_down('box')"]}
+{"instruction": "E구역을 스캔하고 책을 탐지하면 사진 찍어", "output": ["navigate_to('E')", "scan_area()", "detect_object('book')", "take_photo()"]}
+{"instruction": "구역을 스캔하고 상태를 보고해", "output": ["scan_area()", "report_status()"]}
+{"instruction": "F구역으로 이동하다가 만약 빗방울이 느껴진다면 즉시 정지하거나 기지로 복귀", "output": ["navigate_to('F')", "wait(5)", "stop()", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 가방을 찾고 사진 찍어와", "output": ["navigate_to('E')", "detect_object('bag')", "take_photo()", "return_to_base()"]}
+{"instruction": "F구역으로 이동해서 20초 동안 영상 녹화해", "output": ["navigate_to('F')", "record_video(20)"]}
+{"instruction": "90도 왼쪽으로 회전하고 2미터 앞으로 이동해", "output": ["turn('left', 90)", "move_forward(2.0)"]}
+{"instruction": "E구역으로 이동해서 식물 사진을 찍어", "output": ["navigate_to('E')", "take_photo()"]}
+{"instruction": "F구역의 램프를 G구역으로 옮겨줘", "output": ["navigate_to('F')", "pick_up('lamp')", "navigate_to('G')", "put_down('lamp')"]}
+{"instruction": "F구역을 탐색하고 카메라 셋업한 후 사진 찍어", "output": ["navigate_to('F')", "scan_area()", "take_photo()"]}
+{"instruction": "구역 F에서 정찰하고 상태 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
+{"instruction": "F구역에서 즉시 정지하거나 기지로 복귀", "output": ["navigate_to('F')", "stop()", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 노트북을 촬영하고 B구역으로 옮겨줘", "output": ["navigate_to('E')", "take_photo()", "pick_up('notebook')", "navigate_to('B')", "place_at('B')", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 60초 동안 영상을 녹화하고 복귀해", "output": ["navigate_to('E')", "record_video(60)", "return_to_base()"]}
+{"instruction": "오른쪽으로 90도 회전하고 앞으로 2미터 이동해", "output": ["turn('right', 90)", "move_forward(2.0)"]}
+{"instruction": "F구역으로 이동해서 사진 찍어와", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "A구역에서 카드를 집어서 C구역에 놓아", "output": ["navigate_to('A')", "pick_up('card')", "navigate_to('C')", "put_down('card')"]}
+{"instruction": "F구역에서 물체 탐지 후 사진 찍어와", "output": ["navigate_to('F')", "detect_object('key')", "take_photo()"]}
+{"instruction": "F구역을 스캔하고 상태를 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
+{"instruction": "F구역에서 긴급정지 후 기지 복귀", "output": ["navigate_to('F')", "stop()", "return_to_base()"]}
+{"instruction": "C구역으로 이동해서 사진 찍고 박스 집어 C구역에서 A구역으로 박스 옮겨", "output": ["navigate_to('C')", "take_photo()", "pick_up('box')", "navigate_to('A')", "place_at('A')"]}
+{"instruction": "E구역으로 이동해서 60초 동안 영상 녹화해", "output": ["navigate_to('E')", "record_video(60)"]}
+{"instruction": "오른쪽으로 90도 회전 후 전방 2.5m 이동", "output": ["turn('right', 90)", "move_forward(2.5)"]}
+{"instruction": "E구역으로 이동해서 공 사진 찍어", "output": ["navigate_to('E')", "take_photo()"]}
+{"instruction": "A구역의 가방을 C구역으로 옮겨줘", "output": ["navigate_to('A')", "pick_up('bag')", "navigate_to('C')", "put_down('bag')"]}
+{"instruction": "E구역에서 스캔한 후 카페테리아 안에 있는 의자를 찾아 사진 찍어서 보고해", "output": ["navigate_to('E')", "scan_area()", "detect_object('chair')", "take_photo()", "report_status()"]}
+{"instruction": "F구역을 스캔하고 상태 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
+{"instruction": "F구역에서 식물을 집어서 기지로 복귀하고 정지해", "output": ["navigate_to('F')", "pick_up('plant')", "return_to_base()", "stop()"]}
+{"instruction": "E구역에서 20초 동안 영상 녹화하고 복귀해", "output": ["navigate_to('E')", "record_video(20)", "return_to_base()"]}
+{"instruction": "왼쪽으로 45도 회전하고 앞으로 1.5미터 이동해", "output": ["turn('left', 45)", "move_forward(1.5)"]}
+{"instruction": "E구역으로 이동해서 사진 찍어와", "output": ["navigate_to('E')", "take_photo()"]}
+{"instruction": "F구역의 노트북을 C구역으로 이동해주세요", "output": ["navigate_to('F')", "pick_up('notebook')", "navigate_to('C')", "put_down('notebook')"]}
+{"instruction": "E구역을 탐색하고 우mbrella을 찾아 사진 찍어", "output": ["navigate_to('E')", "scan_area()", "detect_object('umbrella')", "take_photo()"]}
+{"instruction": "F구역에서 정찰하고 상태 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
+{"instruction": "F구역에서 즉시 정지하거나 기지로 복귀", "output": ["navigate_to('F')", "stop()", "return_to_base()"]}
+{"instruction": "F구역에서 카드를 찾아 사진 찍고 B구역으로 이동해 놓아", "output": ["navigate_to('F')", "detect_object('card')", "take_photo()", "navigate_to('B')", "place_at('B')"]}
+{"instruction": "E구역으로 이동해서 60초 동안 영상 녹화해", "output": ["navigate_to('E')", "record_video(60)"]}
+{"instruction": "오른쪽으로 90도 회전하고 앞으로 2미터 이동해", "output": ["turn('right', 90)", "move_forward(2.0)"]}
+{"instruction": "F구역으로 이동해서 사진 찍어와", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "C구역의 박스를 E구역에 옮겨주세요", "output": ["navigate_to('C')", "pick_up('box')", "navigate_to('E')", "put_down('box')"]}
+{"instruction": "E구역을 스캔하고 책을 발견하면 사진 찍어", "output": ["navigate_to('E')", "scan_area()", "wait(5)", "detect_object('book')", "take_photo()"]}
+{"instruction": "C구역을 스캔하고 상태를 보고해", "output": ["navigate_to('C')", "scan_area()", "report_status()"]}
+{"instruction": "즉시 정지를 해줘", "output": ["stop()"]}
+{"instruction": "E구역으로 이동해서 가방을 바라보는 사진 찍고, D구역으로 가서 가방 내려놓아", "output": ["navigate_to('E')", "take_photo()", "navigate_to('D')", "put_down('bag')", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 1분 동안 영상 녹화하고 복귀해", "output": ["navigate_to('E')", "record_video(60)", "return_to_base()"]}
+{"instruction": "90도 왼쪽으로 회전하고, 그 이후 1.5m 앞으로 이동해", "output": ["turn('left', 90)", "move_forward(1.5)"]}
+{"instruction": "E구역으로 이동해서 식물을 사진 찍어와", "output": ["navigate_to('E')", "take_photo()"]}
+{"instruction": "A구역에서 램프를 집어서 C구역에 놓아", "output": ["navigate_to('A')", "pick_up('lamp')", "navigate_to('C')", "put_down('lamp')"]}
+{"instruction": "E구역으로 이동해서 객체 탐지한 후 사진 찍어와", "output": ["navigate_to('E')", "detect_object('phone')", "take_photo()"]}
+{"instruction": "A구역을 스캔하고 상태 보고", "output": ["scan_area()", "report_status()"]}
+{"instruction": "E구역에서 긴급 정지 후 기지로 복귀해", "output": ["navigate_to('E')", "stop()", "return_to_base()"]}
+{"instruction": "C구역으로 이동해서 노트북을 찾아 사진 찍고, D구역으로 가져와서 놓아", "output": ["navigate_to('C')", "detect_object('notebook')", "take_photo()", "pick_up('notebook')", "navigate_to('D')", "place_at('D')", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 60초 동안 영상 녹화해", "output": ["navigate_to('E')", "record_video(60)"]}
+{"instruction": "오른쪽으로 90도 회전하고 나아가", "output": ["turn('right', 90)", "move_forward(2.0)"]}
+{"instruction": "F구역으로 이동해서 사진 찍어와", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "E구역의 카드를 C구역으로 옮겨주세요", "output": ["navigate_to('E')", "pick_up('card')", "navigate_to('C')", "put_down('card')"]}
+{"instruction": "F구역에서 스캔하고 기물 탐지 후 사진 찍어", "output": ["navigate_to('F')", "scan_area()", "detect_object('key')", "take_photo()"]}
+{"instruction": "구역을 스캔하고 상태를 보고해", "output": ["scan_area()", "report_status()"]}
+{"instruction": "F구역으로 이동해서 긴급정지를 하고 기지로 복귀해", "output": ["navigate_to('F')", "stop()", "return_to_base()"]}
+{"instruction": "B구역에서 박스를 찾아 사진 찍은 후 A구역으로 복귀해", "output": ["navigate_to('B')", "detect_object('box')", "take_photo()", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 책을 촬영한 후 20초 동안 영상 녹화해", "output": ["navigate_to('E')", "take_photo()", "record_video(20)"]}
+{"instruction": "90도 왼쪽으로 회전하고 1.5m 앞으로 이동해", "output": ["turn('left', 90)", "move_forward(1.5)"]}
+{"instruction": "E구역으로 이동해서 사진 찍어와", "output": ["navigate_to('E')", "take_photo()"]}
+{"instruction": "A구역의 가방을 C구역으로 가져와", "output": ["navigate_to('A')", "pick_up('bag')", "navigate_to('C')", "put_down('bag')"]}
+{"instruction": "E구역에서 물체 탐지 후 사진 찍어와", "output": ["navigate_to('E')", "detect_object('chair')", "take_photo()"]}
+{"instruction": "F구역을 스캔하고 상태를 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
+{"instruction": "긴급 정지 후 기지로 복귀해", "output": ["stop()", "return_to_base()"]}
+{"instruction": "E구역으로 이동해 램프 하나 찍어와", "output": ["navigate_to('E')", "take_photo()", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 60초 동안 영상 녹화해", "output": ["navigate_to('E')", "record_video(60)"]}
+{"instruction": "오른쪽으로 90도 회전하고 앞으로 1.5미터 이동해", "output": ["turn('right', 90)", "move_forward(1.5)"]}
+{"instruction": "E구역으로 이동해서 사진 찍어와", "output": ["navigate_to('E')", "take_photo()"]}
+{"instruction": "A구역의 노트북을 C구역으로 옮겨줘", "output": ["navigate_to('A')", "pick_up('notebook')", "navigate_to('C')", "put_down('notebook')"]}
+{"instruction": "E구역을 스캔한 후 우mbrella을 찾아 사진 찍어", "output": ["navigate_to('E')", "scan_area()", "detect_object('umbrella')", "take_photo()"]}
+{"instruction": "E구역을 스캔하고 상태 보고해", "output": ["navigate_to('E')", "scan_area()", "report_status()"]}
+{"instruction": "즉시 긴급정지하고 기지로 복귀해", "output": ["stop()", "return_to_base()"]}
+{"instruction": "E구역에서 카드를 찾아 사진 찍은 후 F구역으로 이동해", "output": ["navigate_to('E')", "detect_object('card')", "take_photo()", "navigate_to('F')"]}
+{"instruction": "F구역으로 이동해서 영상을 45초 동안 녹화해", "output": ["navigate_to('F')", "record_video(45)"]}
+{"instruction": "오른쪽으로 90도 회전하고 앞으로 1.5m 이동해", "output": ["turn('right', 90)", "move_forward(1.5)"]}
+{"instruction": "E구역으로 이동해서 사진 찍어와", "output": ["navigate_to('E')", "take_photo()"]}
+{"instruction": "C구역의 박스를 E구역으로 옮겨줘", "output": ["navigate_to('C')", "pick_up('box')", "navigate_to('E')", "put_down('box')"]}
+{"instruction": "C구역에서 책을 탐지하고 사진 찍어와", "output": ["navigate_to('C')", "detect_object('book')", "take_photo()"]}
+{"instruction": "E구역을 스캔하고 상태를 보고해", "output": ["navigate_to('E')", "scan_area()", "report_status()"]}
+{"instruction": "즉시 정지하거나 복귀", "output": ["stop()", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 가방을 C구역에 놓고 복귀해", "output": ["navigate_to('E')", "pick_up('bag')", "navigate_to('C')", "place_at('C')", "return_to_base()"]}
+{"instruction": "F구역으로 이동해서 30초 동안 영상을 녹화해", "output": ["navigate_to('F')", "record_video(30)"]}
+{"instruction": "90도 왼쪽으로 회전하고, 그 이후 1.5m 앞으로 이동해", "output": ["turn('left', 90)", "move_forward(1.5)"]}
+{"instruction": "F구역으로 이동해서 식물을 사진 찍어", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "A구역의 등불을 C구역으로 옮겨줘", "output": ["navigate_to('A')", "pick_up('lamp')", "navigate_to('C')", "put_down('lamp')"]}
+{"instruction": "F구역에서 물체를 탐지하고 사진을 찍어와", "output": ["navigate_to('F')", "detect_object('phone')", "take_photo()"]}
+{"instruction": "F구역을 스캔하고 상태 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
+{"instruction": "즉시 정지를 하고 기지로 복귀해", "output": ["stop()", "return_to_base()"]}
+{"instruction": "C구역으로 이동해서 노트북을 찾아 사진 촬영하고 복귀해", "output": ["navigate_to('C')", "detect_object('notebook')", "take_photo()", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 60초 동안 영상 녹화해", "output": ["navigate_to('E')", "record_video(60)"]}
+{"instruction": "왼쪽으로 90도 회전 후 앞으로 1.5m 이동해", "output": ["turn('left', 90)", "move_forward(1.5)"]}
+{"instruction": "F구역으로 이동해서 사진 찍어와", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "E구역 카드를 F구역으로 옮겨줘", "output": ["navigate_to('E')", "pick_up('card')", "navigate_to('F')", "put_down('card')"]}
+{"instruction": "F구역에서 객체 탐지 후 사진 찍어서 보고해", "output": ["navigate_to('F')", "detect_object('key')", "take_photo()", "report_status()"]}
+{"instruction": "F구역을 스캔하고 상태 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
+{"instruction": "F구역에서 긴급 정지하고 기지로 복귀해", "output": ["navigate_to('F')", "stop()", "return_to_base()"]}
+{"instruction": "C구역으로 이동하고 사진을 찍은 후 박스를 P구역에 두고 기지로 복귀", "output": ["navigate_to('C')", "take_photo()", "pick_up('box')", "navigate_to('P')", "put_down('box')", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 45초 동안 영상 녹화해", "output": ["navigate_to('E')", "record_video(45)"]}
+{"instruction": "90도 왼쪽으로 회전하고 2.0m 앞으로 이동해", "output": ["turn('left', 90)", "move_forward(2.0)"]}
+{"instruction": "E구역으로 이동해서ball을 촬영해", "output": ["navigate_to('E')", "take_photo()"]}
+{"instruction": "A구역의 가방을 C구역에 놓아줘", "output": ["navigate_to('A')", "pick_up('bag')", "navigate_to('C')", "put_down('bag')"]}
+{"instruction": "F구역에서 스캔하고 카페트를 탐지해서 사진 찍어", "output": ["navigate_to('F')", "scan_area()", "detect_object('chair')", "take_photo()"]}
+{"instruction": "F구역을 스캔하고 상태 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
+{"instruction": "즉시 긴급정지를 하고 기지로 복귀해", "output": ["stop()", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 사진을 찍고, 램프를 C구역으로 가져와", "output": ["navigate_to('E')", "take_photo()", "pick_up('lamp')", "navigate_to('C')", "put_down('lamp')"]}
+{"instruction": "F구역으로 이동해서 20초 동안 영상을 녹화해", "output": ["navigate_to('F')", "record_video(20)"]}
+{"instruction": "오른쪽으로 90도 회전하고 앞으로 3.5m 이동해", "output": ["turn('right', 90)", "move_forward(3.5)"]}
+{"instruction": "E구역으로 이동해서 사진 찍어와", "output": ["navigate_to('E')", "take_photo()"]}
+{"instruction": "노트북을 A구역에서 C구역으로 옮겨줘", "output": ["navigate_to('A')", "pick_up('notebook')", "navigate_to('C')", "put_down('notebook')"]}
+{"instruction": "E구역으로 이동해서 주유기 탐지 후 사진 찍어", "output": ["navigate_to('E')", "detect_object('umbrella')", "take_photo()"]}
+{"instruction": "F구역을 스캔하고 상태를 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
+{"instruction": "F구역에서 긴급 정지하고 기지로 복귀해", "output": ["navigate_to('F')", "stop()", "return_to_base()"]}
+{"instruction": "C구역으로 이동해서 카드를 촬영하고 복귀해", "output": ["navigate_to('C')", "take_photo()", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 60초 동안 영상 녹화해", "output": ["navigate_to('E')", "record_video(60)"]}
+{"instruction": "90도 왼쪽으로 회전한 후 앞으로 1.5미터 이동해", "output": ["turn('left', 90)", "move_forward(1.5)"]}
+{"instruction": "E구역으로 이동해서 커피잔을 촬영해", "output": ["navigate_to('E')", "take_photo()"]}
+{"instruction": "C구역의 박스를 E구역으로 이동시켜", "output": ["navigate_to('C')", "pick_up('box')", "navigate_to('E')", "put_down('box')"]}
+{"instruction": "E구역을 탐색하고 책이 있는 경우 사진을 찍어", "output": ["navigate_to('E')", "scan_area()", "detect_object('book')", "take_photo()"]}
+{"instruction": "C구역을 스캔하고 상태 보고해", "output": ["navigate_to('C')", "scan_area()", "report_status()"]}
+{"instruction": "즉시 긴급 정지하고 기지로 복귀해", "output": ["stop()", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 가방을 찾고 사진 찍은 후 복귀해", "output": ["navigate_to('E')", "detect_object('bag')", "take_photo()", "return_to_base()"]}
+{"instruction": "F구역으로 이동해서 45초 동안 영상 녹화해", "output": ["navigate_to('F')", "record_video(45)"]}
+{"instruction": "90도 왼쪽으로 회전하고 나가서 1.5미터 앞으로 이동해", "output": ["turn('left', 90)", "move_forward(1.5)"]}
+{"instruction": "F구역으로 이동해서 식물을 촬영해", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "A구역의램프를찾아서C구역으로옮겨줘", "output": ["navigate_to('A')", "pick_up('lamp')", "navigate_to('C')", "put_down('lamp')"]}
+{"instruction": "E구역으로 이동해서 물체 탐지 후 사진 찍어와", "output": ["navigate_to('E')", "detect_object('phone')", "take_photo()"]}
+{"instruction": "F구역에서 전체 스캔하고 상태 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
+{"instruction": "E구역에서 즉시 정지하거나 기지로 복귀", "output": ["navigate_to('E')", "stop()", "return_to_base()"]}
+{"instruction": "C구역으로 이동해서 노트북을 집고 사진 찍어, 나중에 기지로 복귀해", "output": ["navigate_to('C')", "pick_up('notebook')", "take_photo()", "return_to_base()"]}
+{"instruction": "E구역으로 이동해서 60초 동안 영상 녹화해", "output": ["navigate_to('E')", "record_video(60)"]}
+{"instruction": "좌측으로 90도 회전하고 앞으로 1.5m 이동해", "output": ["turn('left', 90)", "move_forward(1.5)"]}
+{"instruction": "F구역으로 이동해서 사진 찍어와", "output": ["navigate_to('F')", "take_photo()"]}
+{"instruction": "C구역의 카드를 가져와 D구역에 놓아주세요", "output": ["navigate_to('C')", "pick_up('card')", "navigate_to('D')", "put_down('card')"]}
+{"instruction": "F구역을 스캔한 후 사진 촬영", "output": ["navigate_to('F')", "scan_area()", "take_photo()"]}
+{"instruction": "F구역을 스캔하고 상태를 보고해", "output": ["navigate_to('F')", "scan_area()", "report_status()"]}
