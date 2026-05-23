@@ -1,6 +1,6 @@
 # movensis LLM Interface
 
-모델: Qwen2.5-7B LoRA 
+모델: Qwen2.5-7B LoRA
 ROS2 Action Server로 전달
 
 ## 구조
@@ -22,7 +22,7 @@ ros2_ws/src/robot_interfaces/
 
 ```bash
 conda env create -f environment.yml
-conda activate mpc-project
+conda activate movensis_llm
 ```
 
 ### 2. ROS2 패키지 빌드
