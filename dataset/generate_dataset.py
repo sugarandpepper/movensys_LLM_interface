@@ -1,6 +1,7 @@
 # dataset/generate_dataset.py
 import ollama
 import json
+import os
 import time
 
 FUNCTIONS = [
@@ -163,7 +164,7 @@ def generate_dataset(total: int = 300):
         time.sleep(0.2)
 
     # 저장
-    output_path = "/home/woojin/movensis/Mobile_LLM/dataset/dataset.jsonl"
+    output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "dataset.jsonl")
     with open(output_path, "w", encoding="utf-8") as f:
         for item in dataset:
             f.write(json.dumps(item, ensure_ascii=False) + "\n")

@@ -1,11 +1,12 @@
 # model/chat.py
 import json
 import sys
+import os
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from peft import PeftModel
 import ollama
-sys.path.append('/home/woojin/movensis/Mobile_LLM/ros2_ws/src/robot_interfaces')
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'ros2_ws', 'src', 'robot_interfaces'))
 from ros2_bridge import send_to_robot_ros2, shutdown_ros
 
 BASE_MODEL = "Qwen/Qwen2.5-7B-Instruct"

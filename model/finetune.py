@@ -1,5 +1,6 @@
 # model/finetune.py
 import json
+import os
 import torch
 from datasets import Dataset
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
@@ -8,9 +9,10 @@ from trl import SFTTrainer, SFTConfig
 
 # ==================== 설정 ====================
 MODEL_NAME   = "Qwen/Qwen2.5-7B-Instruct"
-DATA_PATH    = "/home/woojin/movensis/Mobile_LLM/dataset/dataset.jsonl"
-OUTPUT_DIR   = "/home/woojin/movensis/Mobile_LLM/model/qwen-robot"
-LOG_DIR      = "/home/woojin/movensis/Mobile_LLM/logs"
+_ROOT      = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_PATH  = os.path.join(_ROOT, "dataset", "dataset.jsonl")
+OUTPUT_DIR = os.path.join(_ROOT, "model", "qwen-robot")
+LOG_DIR    = os.path.join(_ROOT, "logs")
 
 SYSTEM_PROMPT = """당신은 로봇 제어 AI입니다.
 사용자의 한국어 명령을 아래 함수 목록만 사용해 JSON 배열로 변환하세요.
