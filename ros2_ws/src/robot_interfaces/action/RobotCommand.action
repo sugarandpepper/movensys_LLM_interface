@@ -1,0 +1,13 @@
+# Goal (LLM → 로봇)
+string[] commands
+string session_id
+---
+# Result (로봇 → LLM)
+bool success
+string message
+string[] executed
+---
+# Feedback (진행 중 피드백)
+int32 current_index
+string current_command
+string status
