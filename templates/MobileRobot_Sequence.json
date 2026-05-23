@@ -1,6 +1,0 @@
-{
-  "id": "MobileRobot_Sequence",
-  "inputs": [{"name": "command", "type": "string", "source": "user"}],
-  "operation": {"type": "llm_sequence", "input": ["command"]},
-  "output": {"format": "json", "fields": [{"name": "sequence", "expr": "result"}]}
-}

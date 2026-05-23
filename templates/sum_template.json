@@ -1,6 +1,0 @@
-{
-  "id": "sum_template_v1",
-  "inputs": [{"name": "x", "type": "numeric", "source": "party"}],
-  "operation": {"type": "secure_sum", "input": ["x"]},
-  "output": {"format": "json", "fields": [{"name": "sum", "expr": "result"}]}
-}
