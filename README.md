@@ -1,7 +1,6 @@
 # movensis LLM Interface
 
 모델: Qwen2.5-7B LoRA
-ROS2 Action Server로 전달
 
 ## 구조
 
