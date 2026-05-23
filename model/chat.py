@@ -9,7 +9,7 @@ sys.path.append('/home/woojin/movensis/Mobile_LLM/ros2_ws/src/robot_interfaces')
 from ros2_bridge import send_to_robot_ros2, shutdown_ros
 
 BASE_MODEL = "Qwen/Qwen2.5-7B-Instruct"
-LORA_PATH  = "/home/woojin/movensis/Mobile_LLM/model/qwen-robot"
+LORA_PATH  = "sugarpepper99/qwen-robot-lora"
 
 SYSTEM_PROMPT = """당신은 로봇 제어 AI입니다.
 사용자의 한국어 명령을 아래 함수 목록만 사용해 JSON 배열로 변환하세요.
