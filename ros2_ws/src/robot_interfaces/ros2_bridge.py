@@ -1,11 +1,18 @@
 # ros2_bridge.py
-import rclpy
-from rclpy.node import Node
-from rclpy.action import ActionClient
-from rclpy.executors import SingleThreadedExecutor
-from robot_interfaces.action import RobotCommand
-import threading
-import uuid
+try:
+    import rclpy
+    from rclpy.node import Node
+    from rclpy.action import ActionClient
+    from rclpy.executors import SingleThreadedExecutor
+    from robot_interfaces.action import RobotCommand
+    import threading
+    import uuid
+    _ROS_AVAILABLE = True
+except Exception:
+    # 테스트/개발 환경: ROS2 메시지 타입 또는 rclpy가 없을 수 있음
+    _ROS_AVAILABLE = False
+    import threading
+    import uuid
 
 
 class RobotActionClient(Node):
@@ -44,7 +51,8 @@ class RobotActionClient(Node):
         return {
             "success": self._result.success,
             "message": self._result.message,
-            "executed": list(self._result.executed)
+            "executed": list(self._result.executed),
+            "status_report": self._result.status_report
         }
 
     def _goal_response_callback(self, future):
@@ -75,6 +83,12 @@ _executor_thread = None
 def init_ros():
     global _ros_initialized, _robot_client, _executor, _executor_thread
     if not _ros_initialized:
+        if not _ROS_AVAILABLE:
+            # ROS가 없으면 초기화 없이 빈 클라이언트를 사용
+            _robot_client = None
+            _ros_initialized = True
+            print("⚠️ ROS2 모듈 미설치: 시뮬레이션 모드로 동작")
+            return
         rclpy.init()
         _robot_client = RobotActionClient()
         _executor = SingleThreadedExecutor()
@@ -88,11 +102,21 @@ def init_ros():
 def send_to_robot_ros2(commands: list) -> dict:
     """chat.py에서 호출하는 메인 함수"""
     init_ros()
+    if not _ROS_AVAILABLE or _robot_client is None:
+        # 시뮬레이션: 즉시 성공 응답을 반환
+        print(f"[SIM] Sending commands to simulated robot: {commands}")
+        return {
+            "success": True,
+            "message": "시뮬레이션: 명령이 전송되었습니다",
+            "executed": commands,
+            "status_report": "battery:100% 위치:(5.0,5.0) 방향:0° 속도:0.0"
+        }
     return _robot_client.send_commands(commands)
 
 
 def shutdown_ros():
     global _ros_initialized
     if _ros_initialized:
-        rclpy.shutdown()
+        if _ROS_AVAILABLE:
+            rclpy.shutdown()
         _ros_initialized = False

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HMS Lab — Robot Control</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+  :root {
+    --bg: #F8FAFC;
+    --bg2: #FFFFFF;
+    --bg3: #F1F5F9;
+    --border: #CBD5E1;
+    --border2: #E2E8F0;
+    --accent: #0EA5E9;
+    --accent-dark: #0284C7;
+    --mint: #10B981;
+    --danger: #EF4444;
+    --warn: #F59E0B;
+    --navy: #1E3A5F;
+    --text: #0F172A;
+    --text2: #475569;
+    --text3: #94A3B8;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'Noto Sans KR', sans-serif;
+    --radius: 10px;
+    --shadow: 0 1px 4px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--sans); background: var(--bg); color: var(--text); height: 100vh; display: flex; flex-direction: column; overflow: hidden; font-size: 15px; }
+
+  /* 상단 바 */
+  .topbar {
+    height: 56px;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    gap: 14px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .logo { font-family: var(--mono); font-size: 16px; font-weight: 500; color: #fff; letter-spacing: 2px; }
+  .logo span { color: #38BDF8; }
+  .topbar-sub { font-size: 13px; color: #94A3B8; }
+  .conn-status { margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 13px; color: #94A3B8; font-family: var(--mono); }
+  .conn-dot { width: 8px; height: 8px; border-radius: 50%; background: #475569; transition: all 0.3s; }
+  .conn-dot.connected { background: var(--mint); box-shadow: 0 0 6px var(--mint); }
+  .conn-dot.error { background: var(--danger); }
+
+  /* 메인 레이아웃 */
+  .main { display: grid; grid-template-columns: 1fr 360px; flex: 1; overflow: hidden; gap: 0; }
+
+  /* 왼쪽 */
+  .left { display: flex; flex-direction: column; border-right: 1px solid var(--border2); overflow: hidden; background: var(--bg); }
+
+  /* 지도 섹션 */
+  .map-section { flex: 1; padding: 16px; display: flex; flex-direction: column; gap: 10px; min-height: 0; }
+  .section-header { display: flex; align-items: center; justify-content: space-between; }
+  .section-title { font-size: 13px; font-weight: 500; color: var(--text2); letter-spacing: 0.5px; }
+  .robot-heading-badge {
+    font-family: var(--mono); font-size: 12px; color: var(--accent);
+    background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 6px;
+    padding: 3px 10px; display: flex; align-items: center; gap: 6px;
+  }
+
+  /* 지도 영역 */
+  .map-area {
+    flex: 1;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    min-height: 200px;
+  }
+
+  /* 좌표 그리드 */
+  .grid-canvas { position: absolute; inset: 0; }
+
+  /* 로봇 마커 */
+  .robot-marker {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    transition: all 0.7s cubic-bezier(0.4,0,0.2,1);
+    z-index: 20;
+  }
+  .robot-ping {
+    position: absolute; inset: -6px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    opacity: 0;
+    animation: ping 2.5s infinite;
+  }
+  @keyframes ping { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(2.2); opacity: 0; } }
+
+  /* 좌표 클릭 마커 */
+  .target-marker {
+    position: absolute;
+    width: 16px; height: 16px;
+    transform: translate(-50%, -50%);
+    z-index: 15;
+    pointer-events: none;
+  }
+  .target-marker::before, .target-marker::after {
+    content: '';
+    position: absolute;
+    background: var(--warn);
+  }
+  .target-marker::before { width: 2px; height: 16px; left: 7px; top: 0; }
+  .target-marker::after { width: 16px; height: 2px; top: 7px; left: 0; }
+
+  /* 버튼 패널 */
+  .btn-panel { padding: 10px 16px 14px; border-top: 1px solid var(--border2); display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .ctrl-btn {
+    padding: 10px 8px; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--bg2);
+    color: var(--text); font-size: 13px; font-weight: 500;
+    font-family: var(--sans); cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    transition: all 0.15s; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .ctrl-btn:hover { border-color: var(--accent); background: #EFF6FF; transform: translateY(-1px); box-shadow: 0 3px 8px rgba(14,165,233,0.15); }
+  .ctrl-btn:active { transform: scale(0.97); }
+  .ctrl-btn.danger { border-color: #FCA5A5; color: var(--danger); }
+  .ctrl-btn.danger:hover { background: #FEF2F2; border-color: var(--danger); }
+  .ctrl-btn .btn-icon { font-size: 18px; }
+  .ctrl-btn .btn-label { font-size: 12px; color: var(--text2); }
+
+  /* 오른쪽 채팅 */
+  .right { display: flex; flex-direction: column; background: var(--bg2); overflow: hidden; }
+
+  .chat-header {
+    padding: 14px 16px 12px;
+    border-bottom: 1px solid var(--border2);
+    flex-shrink: 0;
+  }
+  .chat-header-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+  .chat-header-sub { font-size: 12px; color: var(--text3); }
+
+  /* 빠른 명령 칩 */
+  .quick-chips {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border2);
+    display: flex; gap: 6px; flex-wrap: wrap;
+    flex-shrink: 0;
+    background: var(--bg3);
+  }
+  .chip {
+    padding: 5px 11px; border-radius: 20px;
+    border: 1px solid var(--border); background: var(--bg2);
+    font-size: 12px; color: var(--text2); cursor: pointer;
+    transition: all 0.15s; font-family: var(--sans);
+    white-space: nowrap;
+  }
+  .chip:hover { border-color: var(--accent); color: var(--accent); background: #EFF6FF; }
+
+  /* 채팅 메시지 */
+  .chat-messages {
+    flex: 1; overflow-y: auto; padding: 14px 14px 8px;
+    display: flex; flex-direction: column; gap: 10px;
+    scroll-behavior: smooth;
+  }
+  .chat-messages::-webkit-scrollbar { width: 4px; }
+  .chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .msg { display: flex; flex-direction: column; gap: 3px; max-width: 88%; }
+  .msg.user { align-self: flex-end; align-items: flex-end; }
+  .msg.bot { align-self: flex-start; align-items: flex-start; }
+  .msg.system { align-self: center; }
+
+  .bubble {
+    padding: 10px 14px; border-radius: 14px;
+    font-size: 14px; line-height: 1.6; word-break: break-word;
+  }
+  .msg.user .bubble { background: var(--accent); color: white; border-bottom-right-radius: 4px; }
+  .msg.bot .bubble { background: var(--bg3); color: var(--text); border: 1px solid var(--border2); border-bottom-left-radius: 4px; }
+  .msg.system .bubble { background: transparent; border: 1px solid var(--border2); color: var(--text3); font-size: 12px; font-family: var(--mono); border-radius: 6px; padding: 5px 12px; }
+  .msg-time { font-size: 11px; color: var(--text3); }
+  .msg-sender { font-size: 11px; color: var(--text3); font-weight: 500; }
+
+  /* 명령 미리보기 */
+  .cmd-preview {
+    background: var(--bg2); border: 1.5px solid var(--accent);
+    border-radius: 10px; padding: 12px; display: flex;
+    flex-direction: column; gap: 8px; align-self: stretch;
+    box-shadow: 0 2px 8px rgba(14,165,233,0.1);
+  }
+  .cmd-preview-title { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+  .cmd-list { display: flex; flex-direction: column; gap: 4px; }
+  .cmd-item {
+    font-family: var(--mono); font-size: 13px; color: var(--navy);
+    padding: 5px 10px; background: #EFF6FF;
+    border-radius: 6px; border-left: 3px solid var(--accent);
+  }
+  .cmd-actions { display: flex; gap: 8px; margin-top: 4px; }
+  .cmd-btn {
+    flex: 1; padding: 8px; border-radius: 8px;
+    border: 1.5px solid var(--border); background: var(--bg3);
+    color: var(--text); font-size: 13px; font-weight: 500;
+    font-family: var(--sans); cursor: pointer; transition: all 0.15s;
+  }
+  .cmd-btn.confirm { border-color: var(--mint); color: var(--mint); background: #F0FDF4; }
+  .cmd-btn.confirm:hover { background: #DCFCE7; }
+  .cmd-btn.cancel { color: var(--text3); }
+  .cmd-btn.cancel:hover { border-color: var(--danger); color: var(--danger); background: #FEF2F2; }
+
+  /* 상태 카드 */
+  .status-card {
+    background: #F0FDF4; border: 1.5px solid #86EFAC;
+    border-radius: 10px; padding: 12px 14px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 8px; align-self: stretch;
+  }
+  .status-item { display: flex; flex-direction: column; gap: 2px; }
+  .status-key { font-size: 11px; color: var(--text3); font-family: var(--mono); }
+  .status-val { font-size: 15px; font-weight: 700; color: var(--navy); }
+
+  /* 타이핑 */
+  .typing { display: flex; gap: 5px; align-items: center; padding: 8px 4px; }
+  .typing-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text3); animation: typing 1.2s infinite; }
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typing { 0%,100%{transform:translateY(0);opacity:0.4;} 50%{transform:translateY(-4px);opacity:1;} }
+
+  /* 입력창 */
+  .chat-input-area {
+    padding: 12px; border-top: 1px solid var(--border2);
+    display: flex; gap: 8px; align-items: flex-end; flex-shrink: 0;
+    background: var(--bg);
+  }
+  .chat-input {
+    flex: 1; background: var(--bg2); border: 1.5px solid var(--border);
+    border-radius: 10px; padding: 10px 14px;
+    font-size: 14px; color: var(--text); font-family: var(--sans);
+    resize: none; outline: none; transition: border-color 0.15s;
+    min-height: 44px; max-height: 100px; line-height: 1.5;
+  }
+  .chat-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(14,165,233,0.1); }
+  .chat-input::placeholder { color: var(--text3); }
+  .send-btn {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: var(--accent); border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: all 0.15s; font-size: 18px; color: white;
+  }
+  .send-btn:hover { background: var(--accent-dark); transform: scale(1.04); }
+  .send-btn:disabled { background: var(--border); cursor: not-allowed; transform: none; }
+
+  /* 히스토리 배지 */
+  .history-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 11px; color: var(--text3); background: var(--bg3);
+    border: 1px solid var(--border2); border-radius: 4px;
+    padding: 2px 7px; margin-bottom: 6px; align-self: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">HMS<span>LAB</span></div>
+  <div class="topbar-sub">Robot Control Interface</div>
+  <div class="conn-status">
+    <div class="conn-dot" id="connDot"></div>
+    <span id="connLabel">연결 중...</span>
+  </div>
+</div>
+
+<div class="main">
+  <!-- 왼쪽: 지도 + 버튼 -->
+  <div class="left">
+    <div class="map-section">
+      <div class="section-header">
+        <span class="section-title">📍 실험실 지도 (좌표계)</span>
+        <div class="robot-heading-badge" id="headingBadge">
+          <span>↑</span> <span id="headingText">방향: 0°</span>
+        </div>
+      </div>
+      <div class="map-area" id="mapArea">
+        <canvas class="grid-canvas" id="gridCanvas"></canvas>
+        <div class="robot-marker" id="robotMarker">
+          <div class="robot-ping"></div>
+          <svg id="robotSvg" width="28" height="28" viewBox="0 0 28 28" style="overflow: visible;">
+            <circle cx="14" cy="14" r="11" fill="var(--accent)" stroke="white" stroke-width="2.5" />
+            <line x1="14" y1="14" x2="14" y2="2" stroke="#EF4444" stroke-width="2" stroke-linecap="round" />
+            <polygon points="11,2 17,2 14,0" fill="#EF4444" />
+          </svg>
+        </div>
+        <div class="target-marker" id="targetMarker" style="display:none;"></div>
+      </div>
+    </div>
+
+    <div class="btn-panel">
+      <button class="ctrl-btn danger" onclick="quickCmd('stop()', '긴급 정지')">
+        <span class="btn-icon">⏹</span>
+        <span class="btn-label">긴급 정지</span>
+      </button>
+      <button class="ctrl-btn" onclick="quickCmd('report_status()', '상태 보고')">
+        <span class="btn-icon">📊</span>
+        <span class="btn-label">상태 보고</span>
+      </button>
+      <button class="ctrl-btn" onclick="quickCmd('return_to_base()', '기지 복귀')">
+        <span class="btn-icon">🏠</span>
+        <span class="btn-label">기지 복귀</span>
+      </button>
+      <button class="ctrl-btn" onclick="quickCmd('scan_area()', '구역 스캔')">
+        <span class="btn-icon">🔍</span>
+        <span class="btn-label">구역 스캔</span>
+      </button>
+      <button class="ctrl-btn" onclick="quickCmd('detect_object(\"object\")', '물체 탐지')">
+        <span class="btn-icon">👁</span>
+        <span class="btn-label">물체 탐지</span>
+      </button>
+      <button class="ctrl-btn" onclick="quickCmd('pick_up(\"object\")', '물체 잡기')">
+        <span class="btn-icon">🦾</span>
+        <span class="btn-label">물체 잡기</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- 오른쪽: 채팅 -->
+  <div class="right">
+    <div class="chat-header">
+      <div class="chat-header-title">🤖 로봇 명령 채팅</div>
+      <div class="chat-header-sub">자연어로 로봇을 제어하세요</div>
+    </div>
+
+    <div class="quick-chips">
+      <button class="chip" onclick="fillInput('조금 앞으로 이동해줘')">조금 앞으로</button>
+      <button class="chip" onclick="fillInput('조금 뒤로 이동해줘')">조금 뒤로</button>
+      <button class="chip" onclick="fillInput('왼쪽으로 조금 회전해줘')">왼쪽 회전</button>
+      <button class="chip" onclick="fillInput('오른쪽으로 조금 회전해줘')">오른쪽 회전</button>
+      <button class="chip" onclick="fillInput('컵 집어줘')">컵 집기</button>
+      <button class="chip" onclick="fillInput('물체 탐지해줘')">물체 탐지</button>
+      <button class="chip" onclick="fillInput('현재 위치 알려줘')">현재 위치</button>
+    </div>
+
+    <div class="chat-messages" id="chatMessages"></div>
+
+    <div class="chat-input-area">
+      <textarea class="chat-input" id="chatInput"
+        placeholder="명령을 입력하세요... (예: 조금 앞으로 이동해줘)"
+        onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+      <button class="send-btn" id="sendBtn" onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── 상태 ───────────────────────────────────────────────
+let ws = null;
+let pendingCommands = [];
+let isWaiting = false;
+let robotX = 5.0, robotY = 5.0, robotHeading = 0;
+// Y축: 화면 하단이 0, 상단이 10
+const MAP_W = 10, MAP_H = 10; // 좌표 범위 0~10
+
+// ─── 채팅 히스토리 (localStorage) ───────────────────────
+const HISTORY_KEY = 'hmslab_chat_history';
+const MAX_HISTORY = 50;
+
+function loadHistory() {
+  try { return JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]'); }
+  catch { return []; }
+}
+function saveHistory(msgs) {
+  const trimmed = msgs.slice(-MAX_HISTORY);
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(trimmed));
+}
+function clearHistory() {
+  localStorage.removeItem(HISTORY_KEY);
+  document.getElementById('chatMessages').innerHTML = '';
+  addSystemMsg('대화 기록이 초기화되었습니다');
+}
+
+let chatHistory = loadHistory(); // {role, text, time}
+
+// ─── 지도 그리기 ─────────────────────────────────────────
+function drawGrid() {
+  const canvas = document.getElementById('gridCanvas');
+  const map = document.getElementById('mapArea');
+  const W = map.clientWidth, H = map.clientHeight;
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext('2d');
+
+  const stepX = W / MAP_W, stepH = H / MAP_H;
+
+  // 배경
+  ctx.fillStyle = '#F8FAFC';
+  ctx.fillRect(0, 0, W, H);
+
+  // 그리드 선
+  ctx.strokeStyle = '#CBD5E1';
+  ctx.lineWidth = 0.5;
+  for (let x = 0; x <= MAP_W; x++) {
+    ctx.beginPath(); ctx.moveTo(x * stepX, 0); ctx.lineTo(x * stepX, H); ctx.stroke();
+  }
+  for (let y = 0; y <= MAP_H; y++) {
+    ctx.beginPath(); ctx.moveTo(0, y * stepH); ctx.lineTo(W, y * stepH); ctx.stroke();
+  }
+
+  // 좌표 레이블
+  ctx.fillStyle = '#94A3B8';
+  ctx.font = '10px IBM Plex Mono, monospace';
+  ctx.textAlign = 'center';
+  for (let x = 0; x <= MAP_W; x += 2) {
+    ctx.fillText(x, x * stepX, H - 3);
+  }
+  ctx.textAlign = 'right';
+  for (let y = 0; y <= MAP_H; y += 2) {
+    ctx.fillText(MAP_H - y, 18, y * stepH + 4);
+  }
+
+  // 축 레이블
+  ctx.fillStyle = '#64748B';
+  ctx.font = 'bold 11px IBM Plex Mono, monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText('X', W - 8, H - 3);
+  ctx.fillText('Y', 10, 12);
+}
+
+function coordToPixel(x, y) {
+  const map = document.getElementById('mapArea');
+  const W = map.clientWidth, H = map.clientHeight;
+  return {
+    px: (x / MAP_W) * W,
+    py: H - (y / MAP_H) * H
+  };
+}
+
+function pixelToCoord(px, py) {
+  const map = document.getElementById('mapArea');
+  const W = map.clientWidth, H = map.clientHeight;
+  return {
+    x: parseFloat(((px / W) * MAP_W).toFixed(1)),
+    y: parseFloat((((H - py) / H) * MAP_H).toFixed(1))
+  };
+}
+
+// ─── 로봇 마커 업데이트 ──────────────────────────────────
+function updateRobotMarker() {
+  const { px, py } = coordToPixel(robotX, robotY);
+  const marker = document.getElementById('robotMarker');
+  marker.style.left = px + 'px';
+  marker.style.top = py + 'px';
+
+  // 방향 화살표 회전 (0°=위, 시계방향)
+  document.getElementById('robotSvg').style.transform =
+    `rotate(${robotHeading}deg)`;
+
+  // 방향 배지 업데이트
+  const dirs = ['↑N', '↗NE', '→E', '↘SE', '↓S', '↙SW', '←W', '↖NW'];
+  const idx = Math.round(robotHeading / 45) % 8;
+  document.getElementById('headingText').textContent =
+    `방향: ${robotHeading}°  ${dirs[idx]}`;
+  document.getElementById('headingBadge').querySelector('span').textContent = dirs[idx];
+}
+
+// ─── 지도 클릭 → 이동 명령 ──────────────────────────────
+document.getElementById('mapArea').addEventListener('click', function(e) {
+  if (isWaiting) return;
+  const rect = this.getBoundingClientRect();
+  const { x, y } = pixelToCoord(e.clientX - rect.left, e.clientY - rect.top);
+
+  // 타겟 마커
+  const tm = document.getElementById('targetMarker');
+  const { px, py } = coordToPixel(x, y);
+  tm.style.left = px + 'px';
+  tm.style.top = py + 'px';
+  tm.style.display = 'block';
+  setTimeout(() => tm.style.display = 'none', 2000);
+
+  const cmd = `(${x}, ${y}) 좌표로 이동해줘`;
+  addUserMsg(cmd);
+  showTyping();
+  setWaiting(true);
+  wsSend({ type: 'message', text: cmd });
+});
+
+// ─── WebSocket ───────────────────────────────────────────
+function connect() {
+  ws = new WebSocket(`ws://${location.host}/ws`);
+  ws.onopen = () => {
+    document.getElementById('connDot').className = 'conn-dot connected';
+    document.getElementById('connLabel').textContent = '서버 연결됨';
+    // 히스토리 요약 전송
+    if (chatHistory.length > 0) {
+      const summary = chatHistory.slice(-10).map(h => `[${h.role}] ${h.text}`).join('\n');
+      wsSend({ type: 'context', history: summary });
+    }
+  };
+  ws.onclose = () => {
+    document.getElementById('connDot').className = 'conn-dot error';
+    document.getElementById('connLabel').textContent = '연결 끊김';
+    setTimeout(connect, 3000);
+  };
+  ws.onerror = () => {
+    document.getElementById('connDot').className = 'conn-dot error';
+  };
+  ws.onmessage = (e) => handleServerMessage(JSON.parse(e.data));
+}
+
+function wsSend(data) {
+  if (ws && ws.readyState === 1) ws.send(JSON.stringify(data));
+}
+
+// ─── 서버 메시지 처리 ────────────────────────────────────
+function handleServerMessage(data) {
+  removeTyping();
+
+  if (data.type === 'chat') {
+    addBotMsg(data.text);
+    saveToHistory('bot', data.text);
+    setWaiting(false);
+  } else if (data.type === 'converting') {
+    showTyping();
+  } else if (data.type === 'commands') {
+    pendingCommands = data.commands;
+    showCommandPreview(data.commands);
+    setWaiting(false);
+  } else if (data.type === 'executing') {
+    showTyping();
+    setWaiting(true);
+  } else if (data.type === 'result') {
+    handleResult(data);
+    setWaiting(false);
+  } else if (data.type === 'error') {
+    addBotMsg('⚠️ ' + data.text);
+    setWaiting(false);
+  } else if (data.type === 'cancelled') {
+    addSystemMsg('명령이 취소됐습니다');
+    setWaiting(false);
+  } else if (data.type === 'robot_state') {
+    // 로봇 위치/방향 업데이트
+    if (data.x !== undefined) robotX = data.x;
+    if (data.y !== undefined) robotY = data.y;
+    if (data.heading !== undefined) robotHeading = data.heading;
+    updateRobotMarker();
+  }
+}
+
+function handleResult(data) {
+  if (data.success) {
+    addBotMsg(`✅ ${data.message}`);
+    saveToHistory('bot', data.message);
+
+    // 상태 보고 카드
+    if (data.status_report) showStatusCard(data.status_report);
+
+    // navigate_to → 로봇 이동 시뮬레이션
+    // 이전 위치를 기준으로 목표 좌표 방향을 계산해 로봇 헤딩을 업데이트합니다.
+    let prevX = robotX, prevY = robotY;
+    data.executed.forEach(cmd => {
+      const m = cmd.match(/navigate_to\((\d+\.?\d*),\s*(\d+\.?\d*)\)/);
+      if (m) {
+        const tx = parseFloat(m[1]);
+        const ty = parseFloat(m[2]);
+        const dx = tx - prevX;
+        const dy = ty - prevY;
+        if (Math.abs(dx) > 1e-6 || Math.abs(dy) > 1e-6) {
+          // 화면에서 0°는 위쪽(positive Y), 시계방향이 양수인 현재 좌표계에 맞춰 각도 계산
+          const ang = Math.atan2(dx, dy) * 180 / Math.PI; // atan2(dx, dy) → 0° = up
+          robotHeading = (ang + 360) % 360;
+        }
+        robotX = tx;
+        robotY = ty;
+        prevX = robotX; prevY = robotY;
+        updateRobotMarker();
+      }
+      // move_forward → 방향에 따라 이동
+      if (cmd.startsWith('move_forward')) {
+        const dist = parseFloat(cmd.match(/([\d.]+)/)?.[1] || 0.5);
+        robotX += dist * Math.sin(robotHeading * Math.PI / 180);
+        robotY += dist * Math.cos(robotHeading * Math.PI / 180);
+        robotX = Math.max(0, Math.min(MAP_W, robotX));
+        robotY = Math.max(0, Math.min(MAP_H, robotY));
+        prevX = robotX; prevY = robotY;
+        updateRobotMarker();
+      }
+      if (cmd.startsWith('move_backward')) {
+        const dist = parseFloat(cmd.match(/([\d.]+)/)?.[1] || 0.5);
+        robotX -= dist * Math.sin(robotHeading * Math.PI / 180);
+        robotY -= dist * Math.cos(robotHeading * Math.PI / 180);
+        robotX = Math.max(0, Math.min(MAP_W, robotX));
+        robotY = Math.max(0, Math.min(MAP_H, robotY));
+        prevX = robotX; prevY = robotY;
+        updateRobotMarker();
+      }
+      if (cmd.startsWith('turn')) {
+        const dir = cmd.includes('left') ? -1 : 1;
+        const angle = parseFloat(cmd.match(/,\s*(\d+)/)?.[1] || 15);
+        robotHeading = (robotHeading + dir * angle + 360) % 360;
+        updateRobotMarker();
+      }
+    });
+  } else {
+    addBotMsg('❌ ' + data.message);
+  }
+}
+
+function showStatusCard(report) {
+  const container = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'msg bot';
+
+  // "배터리:89% 위치:(3.0,4.2) 방향:45° 속도:0.6m/s 상태:정상" 파싱
+  const items = report.split(' ').map(s => {
+    const [k, v] = s.split(':');
+    return { k, v: v || '' };
+  });
+
+  const rows = items.map(i => `
+    <div class="status-item">
+      <span class="status-key">${i.k}</span>
+      <span class="status-val">${i.v}</span>
+    </div>
+  `).join('');
+
+  div.innerHTML = `
+    <div class="status-card">${rows}</div>
+    <span class="msg-time">${now()}</span>
+  `;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+  saveToHistory('bot', '[상태 보고] ' + report);
+}
+
+function showCommandPreview(commands) {
+  const container = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'msg bot';
+  div.id = 'cmdPreview';
+
+  const items = commands.map((c, i) => `<div class="cmd-item">${i+1}. ${c}</div>`).join('');
+  div.innerHTML = `
+    <div class="cmd-preview">
+      <div class="cmd-preview-title">실행 예정 명령어</div>
+      <div class="cmd-list">${items}</div>
+      <div class="cmd-actions">
+        <button class="cmd-btn confirm" onclick="confirmCmd()">✓ 실행</button>
+        <button class="cmd-btn cancel" onclick="cancelCmd()">✕ 취소</button>
+      </div>
+    </div>
+    <span class="msg-time">${now()}</span>
+  `;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
+
+function confirmCmd() {
+  document.getElementById('cmdPreview')?.remove();
+  addUserMsg('실행');
+  showTyping();
+  setWaiting(true);
+  wsSend({ type: 'confirm' });
+}
+
+function cancelCmd() {
+  document.getElementById('cmdPreview')?.remove();
+  wsSend({ type: 'cancel' });
+}
+
+function quickCmd(cmd, label) {
+  addUserMsg(label);
+  showTyping();
+  setWaiting(true);
+  wsSend({ type: 'quick_cmd', cmd });
+}
+
+// ─── 메시지 UI ───────────────────────────────────────────
+function addUserMsg(text) {
+  addMsg(text, 'user');
+  saveToHistory('user', text);
+}
+function addBotMsg(text) { addMsg(text, 'bot'); }
+function addSystemMsg(text) { addMsg(text, 'system'); }
+
+function addMsg(text, type) {
+  const container = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'msg ' + type;
+  div.innerHTML = `<div class="bubble">${text}</div><span class="msg-time">${now()}</span>`;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
+
+function showTyping() {
+  removeTyping();
+  const container = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'msg bot'; div.id = 'typingIndicator';
+  div.innerHTML = `<div class="bubble"><div class="typing"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>`;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
+function removeTyping() { document.getElementById('typingIndicator')?.remove(); }
+
+// ─── 히스토리 저장/복원 ──────────────────────────────────
+function saveToHistory(role, text) {
+  chatHistory.push({ role, text, time: now() });
+  saveHistory(chatHistory);
+}
+
+function restoreHistory() {
+  if (chatHistory.length === 0) {
+    addSystemMsg('새 대화를 시작합니다');
+    return;
+  }
+  const container = document.getElementById('chatMessages');
+  const badge = document.createElement('div');
+  badge.className = 'history-badge';
+  badge.innerHTML = `🕓 이전 대화 ${chatHistory.length}개 불러옴 &nbsp;<button onclick="clearHistory()" style="background:none;border:none;cursor:pointer;color:#EF4444;font-size:11px;">초기화</button>`;
+  container.appendChild(badge);
+
+  chatHistory.slice(-20).forEach(h => {
+    const div = document.createElement('div');
+    div.className = 'msg ' + (h.role === 'user' ? 'user' : 'bot');
+    div.innerHTML = `<div class="bubble" style="opacity:0.7">${h.text}</div><span class="msg-time">${h.time}</span>`;
+    container.appendChild(div);
+  });
+  container.scrollTop = container.scrollHeight;
+}
+
+// ─── 입력 ────────────────────────────────────────────────
+function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (!text || isWaiting || !ws || ws.readyState !== 1) return;
+  addUserMsg(text);
+  input.value = '';
+  input.style.height = 'auto';
+
+  // 히스토리 컨텍스트 포함해서 전송
+  const recentCtx = chatHistory.slice(-6).map(h => `[${h.role}] ${h.text}`).join('\n');
+  showTyping();
+  setWaiting(true);
+  wsSend({ type: 'message', text, context: recentCtx });
+}
+
+function fillInput(text) {
+  const input = document.getElementById('chatInput');
+  input.value = text;
+  input.focus();
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+}
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+}
+function setWaiting(v) {
+  isWaiting = v;
+  document.getElementById('sendBtn').disabled = v;
+  document.getElementById('chatInput').disabled = v;
+}
+function now() {
+  return new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
+}
+
+// ─── 초기화 ──────────────────────────────────────────────
+window.addEventListener('resize', () => { drawGrid(); updateRobotMarker(); });
+window.addEventListener('load', () => {
+  drawGrid();
+  updateRobotMarker();
+  restoreHistory();
+  connect();
+});
+</script>
+</body>
+</html>

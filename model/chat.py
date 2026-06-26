@@ -2,6 +2,7 @@
 import json
 import sys
 import os
+import re
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from peft import PeftModel
@@ -156,6 +157,9 @@ def send_to_robot(commands: list):
     if result["success"]:
         print(f"✅ 완료: {result['message']}")
         print(f"   실행된 명령: {result['executed']}")
+        if result.get("status_report"):
+            print(f"\n📊 로봇 상태 보고")
+            print(f"   {result['status_report']}")
     else:
         print(f"❌ 실패: {result['message']}")
     print()
@@ -224,6 +228,23 @@ def main():
             shutdown_ros()
             break
         if not user_input:
+            continue
+
+        # 좌표 이동 명령 직접 처리 (x, y) 형태
+        coord_match = re.search(r'\((\d+\.?\d*),\s*(\d+\.?\d*)\)', user_input)
+        if coord_match:
+            x, y = coord_match.group(1), coord_match.group(2)
+            cmd = f"navigate_to({x}, {y})"
+            print("\n⚙️  실행 중... (좌표 이동)")
+            result = send_to_robot_ros2([cmd])
+            if result["success"]:
+                print(f"✅ 완료: {result['message']}")
+                print(f"   실행된 명령: {result.get('executed', [])}")
+                if result.get("status_report"):
+                    print(f"\n📊 로봇 상태 보고\n   {result['status_report']}")
+            else:
+                print(f"❌ 실패: {result['message']}")
+            print()
             continue
 
        # 2. 입력 분류
