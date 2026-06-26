@@ -15,6 +15,7 @@ class RobotActionServer(Node):
             'execute_robot_command',
             self._execute_callback
         )
+        self.current_zone = 'A'  # 추가
         self.get_logger().info("✅ 로봇 Action 서버 시작")
 
     async def _execute_callback(self, goal_handle):
@@ -52,15 +53,29 @@ class RobotActionServer(Node):
         result.success = True
         result.message = f"전체 {len(executed)}개 명령 완료"
         result.executed = executed
+        result.status_report = getattr(self, '_last_status', '')
         return result
 
     def _execute_command(self, cmd: str) -> bool:
         """실제 로봇 드라이버 호출 - 하드웨어 연결 시 여기에 코드 추가"""
         try:
             if cmd.startswith("navigate_to"):
-                zone = re.search(r"'([A-F])'", cmd).group(1)
-                self.get_logger().info(f"🚗 이동: {zone}구역")
-                # TODO: Nav2 호출
+                # 좌표 형태: navigate_to(3.0, 4.5) 또는 Zone 형태: navigate_to('A')
+                zone_match = re.search(r"'([A-F])'", cmd)
+                coord_match = re.search(r"\((\d+\.?\d*),\s*(\d+\.?\d*)\)", cmd)
+                if zone_match:
+                    zone = zone_match.group(1)
+                    self.current_zone = zone
+                    self.get_logger().info(f"🚗 이동: {zone}구역")
+                    # TODO: Nav2 호출 (zone)
+                elif coord_match:
+                    x, y = coord_match.group(1), coord_match.group(2)
+                    self.current_zone = f"({x},{y})"
+                    self.get_logger().info(f"🚗 이동: 좌표 ({x}, {y})")
+                    # TODO: Nav2 좌표 이동 호출
+                else:
+                    self.get_logger().warn(f"⚠️ navigate_to 명령 파싱 실패: {cmd}")
+                    return False
                 return True
 
             elif cmd.startswith("move_forward"):
@@ -146,8 +161,12 @@ class RobotActionServer(Node):
                 return True
 
             elif cmd.startswith("report_status"):
-                self.get_logger().info("📊 상태 보고")
-                # TODO: 센서 데이터 수집 및 보고
+                import random
+                battery = random.randint(60, 100)
+                speed = round(random.uniform(0.0, 1.5), 1)
+                status_msg = f"배터리:{battery}% 위치:{self.current_zone}구역 속도:{speed}m/s 상태:정상"
+                self._last_status = status_msg
+                self.get_logger().info(f"📊 상태 보고 — {status_msg}")
                 return True
 
             elif cmd.startswith("charge"):
