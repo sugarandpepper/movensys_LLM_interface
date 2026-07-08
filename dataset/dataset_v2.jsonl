@@ -1,0 +1,300 @@
+{"instruction":"A구역으로 가줘","output":["go('A')"]}
+{"instruction":"B구역으로 이동해","output":["go('B')"]}
+{"instruction":"C구역까지 가주세요","output":["go('C')"]}
+{"instruction":"D구역으로 가","output":["go('D')"]}
+{"instruction":"A구역으로 이동 부탁해","output":["go('A')"]}
+{"instruction":"B구역에 가줘","output":["go('B')"]}
+{"instruction":"C구역으로 이동해줘","output":["go('C')"]}
+{"instruction":"D구역까지 이동해","output":["go('D')"]}
+{"instruction":"A구역으로 가주세요","output":["go('A')"]}
+{"instruction":"B구역으로 가줘","output":["go('B')"]}
+{"instruction":"좌표 (2.0, 1.5, 0.0)으로 이동해","output":["go(2.0, 1.5, 0.0)"]}
+{"instruction":"위치 (-1.0, 3.0, 1.571)로 가줘","output":["go(-1.0, 3.0, 1.571)"]}
+{"instruction":"좌표 (4.5, -2.0, -1.571)으로 이동해주세요","output":["go(4.5, -2.0, -1.571)"]}
+{"instruction":"좌표 (0.0, 0.0, 3.14)로 이동해","output":["go(0.0, 0.0, 3.14)"]}
+{"instruction":"위치 (5.0, 2.5, -3.14)로 가","output":["go(5.0, 2.5, -3.14)"]}
+{"instruction":"좌표 (-3.0, -1.5, 0.785)로 이동 부탁해","output":["go(-3.0, -1.5, 0.785)"]}
+{"instruction":"좌표 (1.2, -2.8, -0.785)으로 가줘","output":["go(1.2, -2.8, -0.785)"]}
+{"instruction":"위치 (3.3, 4.0, 0.262)로 이동해줘","output":["go(3.3, 4.0, 0.262)"]}
+{"instruction":"좌표 (-2.5, 0.5, -0.524)로 이동해","output":["go(-2.5, 0.5, -0.524)"]}
+{"instruction":"좌표 (0.8, 5.0, 2.0)으로 가주세요","output":["go(0.8, 5.0, 2.0)"]}
+{"instruction":"A구역으로 이동해서 컵 찾아줘","output":["go('A')","detect('cup')"]}
+{"instruction":"B구역 가서 박스 탐지해","output":["go('B')","detect('box')"]}
+{"instruction":"C구역으로 가서 병 찾아주세요","output":["go('C')","detect('bottle')"]}
+{"instruction":"D구역 이동 후 책 탐지해줘","output":["go('D')","detect('book')"]}
+{"instruction":"A구역에 가서 도구 찾아줘","output":["go('A')","detect('tool')"]}
+{"instruction":"B구역으로 이동해서 펜 탐지해","output":["go('B')","detect('pen')"]}
+{"instruction":"C구역까지 가서 가방 찾아줘","output":["go('C')","detect('bag')"]}
+{"instruction":"D구역으로 가서 컵을 탐지해주세요","output":["go('D')","detect('cup')"]}
+{"instruction":"A구역 이동하고 병 찾아","output":["go('A')","detect('bottle')"]}
+{"instruction":"B구역으로 이동한 다음 책 탐지해줘","output":["go('B')","detect('book')"]}
+{"instruction":"A구역 가서 컵 탐지하고 그리퍼 열고 집어줘","output":["go('A')","detect('cup')","open_gripper()","pick('cup')"]}
+{"instruction":"B구역으로 이동해서 박스 찾고 그리퍼 연 뒤 집어","output":["go('B')","detect('box')","open_gripper()","pick('box')"]}
+{"instruction":"C구역 가서 병 탐지하고 그리퍼 열어서 집어줘","output":["go('C')","detect('bottle')","open_gripper()","pick('bottle')"]}
+{"instruction":"D구역 이동 후 책 찾고 그리퍼 열고 집어주세요","output":["go('D')","detect('book')","open_gripper()","pick('book')"]}
+{"instruction":"A구역에 가서 도구 탐지하고 그리퍼 열고 집어","output":["go('A')","detect('tool')","open_gripper()","pick('tool')"]}
+{"instruction":"B구역까지 가서 펜 찾고 그리퍼 연 다음 집어줘","output":["go('B')","detect('pen')","open_gripper()","pick('pen')"]}
+{"instruction":"C구역으로 이동해서 가방 탐지하고 그리퍼 열고 집어줘","output":["go('C')","detect('bag')","open_gripper()","pick('bag')"]}
+{"instruction":"D구역 가서 컵 찾고 그리퍼 열어서 집어주세요","output":["go('D')","detect('cup')","open_gripper()","pick('cup')"]}
+{"instruction":"A구역 이동하고 병 탐지한 뒤 그리퍼 열고 집어","output":["go('A')","detect('bottle')","open_gripper()","pick('bottle')"]}
+{"instruction":"B구역으로 가서 책 찾고 그리퍼 열고 집어줘","output":["go('B')","detect('book')","open_gripper()","pick('book')"]}
+{"instruction":"앞으로 10cm 이동해줘","output":["move_base(0.1, 0, 0)"]}
+{"instruction":"뒤로 8cm 가","output":["move_base(-0.08, 0, 0)"]}
+{"instruction":"왼쪽으로 5cm 이동해","output":["move_base(0, 0.05, 0)"]}
+{"instruction":"오른쪽으로 12cm 움직여줘","output":["move_base(0, -0.12, 0)"]}
+{"instruction":"앞으로 6cm 가고 반시계 방향으로 15도 돌아줘","output":["move_base(0.06, 0, 0.262)"]}
+{"instruction":"뒤로 4cm 이동하면서 시계 방향으로 10도 회전해","output":["move_base(-0.04, 0, -0.175)"]}
+{"instruction":"제자리에서 반시계 방향으로 30도 돌아","output":["move_base(0, 0, 0.524)"]}
+{"instruction":"제자리에서 시계 방향으로 20도 회전해줘","output":["move_base(0, 0, -0.349)"]}
+{"instruction":"왼쪽으로 15cm 이동하고 시계 방향으로 5도 돌려줘","output":["move_base(0, 0.15, -0.087)"]}
+{"instruction":"오른쪽으로 20cm 움직이고 반시계 방향으로 10도 회전해","output":["move_base(0, -0.2, 0.175)"]}
+{"instruction":"엔드이펙터를 오른쪽으로 3cm 이동해줘","output":["move_ee(0.03, 0, 0, 0, 0, 0)"]}
+{"instruction":"매니퓰레이터를 왼쪽으로 4cm 움직여","output":["move_ee(-0.04, 0, 0, 0, 0, 0)"]}
+{"instruction":"엔드이펙터 앞으로 5cm 보내줘","output":["move_ee(0, 0.05, 0, 0, 0, 0)"]}
+{"instruction":"매니퓰레이터를 뒤로 2cm 이동해","output":["move_ee(0, -0.02, 0, 0, 0, 0)"]}
+{"instruction":"엔드이펙터를 위로 6cm 올려줘","output":["move_ee(0, 0, 0.06, 0, 0, 0)"]}
+{"instruction":"매니퓰레이터 아래로 3cm 내려","output":["move_ee(0, 0, -0.03, 0, 0, 0)"]}
+{"instruction":"엔드이펙터를 오른쪽으로 2cm 옮기고 컵 집어줘","output":["move_ee(0.02, 0, 0, 0, 0, 0)","pick('cup')"]}
+{"instruction":"매니퓰레이터를 앞으로 4cm 이동한 다음 박스 집어","output":["move_ee(0, 0.04, 0, 0, 0, 0)","pick('box')"]}
+{"instruction":"엔드이펙터를 아래로 1cm 내리고 펜 집어줘","output":["move_ee(0, 0, -0.01, 0, 0, 0)","pick('pen')"]}
+{"instruction":"매니퓰레이터를 왼쪽으로 5cm 조정하고 병 집어주세요","output":["move_ee(-0.05, 0, 0, 0, 0, 0)","pick('bottle')"]}
+{"instruction":"앞으로 5cm 조정한 뒤 컵 집어줘","output":["move_base(0.05, 0, 0)","pick('cup')"]}
+{"instruction":"오른쪽으로 4cm 이동하고 박스 집어","output":["move_base(0, -0.04, 0)","pick('box')"]}
+{"instruction":"베이스를 왼쪽으로 6cm 맞춘 다음 병 집어줘","output":["move_base(0, 0.06, 0)","pick('bottle')"]}
+{"instruction":"뒤로 3cm 물러나고 책 집어","output":["move_base(-0.03, 0, 0)","pick('book')"]}
+{"instruction":"엔드이펙터를 오른쪽으로 2cm 맞추고 도구 집어줘","output":["move_ee(0.02, 0, 0, 0, 0, 0)","pick('tool')"]}
+{"instruction":"매니퓰레이터를 앞으로 3cm 조정한 후 펜 집어","output":["move_ee(0, 0.03, 0, 0, 0, 0)","pick('pen')"]}
+{"instruction":"엔드이펙터를 아래로 2cm 내리고 컵 집어줘","output":["move_ee(0, 0, -0.02, 0, 0, 0)","pick('cup')"]}
+{"instruction":"베이스를 시계 방향으로 10도 돌린 뒤 가방 집어","output":["move_base(0, 0, -0.175)","pick('bag')"]}
+{"instruction":"엔드이펙터를 왼쪽으로 3cm 옮긴 다음 책 집어주세요","output":["move_ee(-0.03, 0, 0, 0, 0, 0)","pick('book')"]}
+{"instruction":"로봇을 앞으로 8cm 이동하고 병 집어줘","output":["move_base(0.08, 0, 0)","pick('bottle')"]}
+{"instruction":"A구역으로 가서 컵 찾고 엔드이펙터를 오른쪽으로 2cm 조정한 뒤 집어줘","output":["go('A')","detect('cup')","move_ee(0.02, 0, 0, 0, 0, 0)","pick('cup')"]}
+{"instruction":"B구역 이동 후 박스 탐지하고 매니퓰레이터를 아래로 3cm 내려 집어","output":["go('B')","detect('box')","move_ee(0, 0, -0.03, 0, 0, 0)","pick('box')"]}
+{"instruction":"C구역에 가서 병 찾고 그리퍼 열고 앞으로 2cm 조정해서 집어줘","output":["go('C')","detect('bottle')","open_gripper()","move_ee(0, 0.02, 0, 0, 0, 0)","pick('bottle')"]}
+{"instruction":"D구역으로 이동해서 책 탐지하고 엔드이펙터를 왼쪽으로 3cm 옮긴 후 집어주세요","output":["go('D')","detect('book')","move_ee(-0.03, 0, 0, 0, 0, 0)","pick('book')"]}
+{"instruction":"A구역 가서 도구 찾고 베이스를 앞으로 5cm 이동한 다음 집어","output":["go('A')","detect('tool')","move_base(0.05, 0, 0)","pick('tool')"]}
+{"instruction":"B구역으로 이동하고 펜 탐지한 뒤 그리퍼 열고 아래로 1cm 내려 집어줘","output":["go('B')","detect('pen')","open_gripper()","move_ee(0, 0, -0.01, 0, 0, 0)","pick('pen')"]}
+{"instruction":"C구역에서 가방 찾아서 오른쪽으로 4cm 조정하고 집어주세요","output":["go('C')","detect('bag')","move_ee(0.04, 0, 0, 0, 0, 0)","pick('bag')"]}
+{"instruction":"D구역 가서 컵 탐지하고 베이스를 왼쪽으로 5cm 맞춘 뒤 집어줘","output":["go('D')","detect('cup')","move_base(0, 0.05, 0)","pick('cup')"]}
+{"instruction":"A구역으로 이동 후 병을 찾고 그리퍼 연 다음 엔드이펙터를 앞으로 3cm 보내서 집어","output":["go('A')","detect('bottle')","open_gripper()","move_ee(0, 0.03, 0, 0, 0, 0)","pick('bottle')"]}
+{"instruction":"B구역까지 가서 책 탐지하고 시계 방향으로 10도 돌고 집어줘","output":["go('B')","detect('book')","move_base(0, 0, -0.175)","pick('book')"]}
+{"instruction":"그리퍼 열어줘","output":["open_gripper()"]}
+{"instruction":"그리퍼를 열어","output":["open_gripper()"]}
+{"instruction":"집게 열어주세요","output":["open_gripper()"]}
+{"instruction":"그리퍼 오픈해줘","output":["open_gripper()"]}
+{"instruction":"잡는 부분을 열어줘","output":["open_gripper()"]}
+{"instruction":"그리퍼를 벌려","output":["open_gripper()"]}
+{"instruction":"물체 잡기 전에 그리퍼 열어줘","output":["open_gripper()"]}
+{"instruction":"엔드이펙터 그리퍼 열어","output":["open_gripper()"]}
+{"instruction":"그리퍼 열기 동작 실행해줘","output":["open_gripper()"]}
+{"instruction":"집게를 벌려주세요","output":["open_gripper()"]}
+{"instruction":"베이스를 앞으로 5cm 이동하고 엔드이펙터를 오른쪽으로 2cm 조정해줘","output":["move_base(0.05, 0, 0)","move_ee(0.02, 0, 0, 0, 0, 0)"]}
+{"instruction":"로봇을 오른쪽으로 4cm 옮긴 뒤 매니퓰레이터를 아래로 2cm 내려","output":["move_base(0, -0.04, 0)","move_ee(0, 0, -0.02, 0, 0, 0)"]}
+{"instruction":"베이스를 왼쪽으로 6cm 맞추고 엔드이펙터를 앞으로 3cm 보내줘","output":["move_base(0, 0.06, 0)","move_ee(0, 0.03, 0, 0, 0, 0)"]}
+{"instruction":"뒤로 5cm 이동한 다음 매니퓰레이터를 위로 4cm 올려줘","output":["move_base(-0.05, 0, 0)","move_ee(0, 0, 0.04, 0, 0, 0)"]}
+{"instruction":"베이스를 반시계 방향으로 15도 돌리고 엔드이펙터를 왼쪽으로 2cm 이동해","output":["move_base(0, 0, 0.262)","move_ee(-0.02, 0, 0, 0, 0, 0)"]}
+{"instruction":"시계 방향으로 10도 회전하고 매니퓰레이터를 앞으로 5cm 조정해줘","output":["move_base(0, 0, -0.175)","move_ee(0, 0.05, 0, 0, 0, 0)"]}
+{"instruction":"베이스를 앞으로 8cm 이동한 후 엔드이펙터를 아래로 1cm 내려줘","output":["move_base(0.08, 0, 0)","move_ee(0, 0, -0.01, 0, 0, 0)"]}
+{"instruction":"로봇을 오른쪽으로 7cm 옮기고 엔드이펙터를 오른쪽으로 3cm 더 이동해","output":["move_base(0, -0.07, 0)","move_ee(0.03, 0, 0, 0, 0, 0)"]}
+{"instruction":"베이스를 왼쪽으로 5cm 조정하고 매니퓰레이터를 뒤로 2cm 빼줘","output":["move_base(0, 0.05, 0)","move_ee(0, -0.02, 0, 0, 0, 0)"]}
+{"instruction":"앞으로 6cm 가면서 반시계 방향으로 10도 돌고 엔드이펙터를 위로 3cm 올려줘","output":["move_base(0.06, 0, 0.175)","move_ee(0, 0, 0.03, 0, 0, 0)"]}
+{"instruction":"C구역으로 가줘","output":["go('C')"]}
+{"instruction":"D구역으로 이동 부탁해","output":["go('D')"]}
+{"instruction":"A구역에 도착해줘","output":["go('A')"]}
+{"instruction":"B구역까지 이동해주세요","output":["go('B')"]}
+{"instruction":"C구역으로 바로 가","output":["go('C')"]}
+{"instruction":"D구역에 가주세요","output":["go('D')"]}
+{"instruction":"A구역 쪽으로 이동해","output":["go('A')"]}
+{"instruction":"B구역으로 가주세요","output":["go('B')"]}
+{"instruction":"C구역 이동 부탁드립니다","output":["go('C')"]}
+{"instruction":"D구역까지 가줘","output":["go('D')"]}
+{"instruction":"좌표 (1.5, 2.2, 0.524)로 이동해","output":["go(1.5, 2.2, 0.524)"]}
+{"instruction":"좌표 (-2.0, 4.5, -1.0)으로 가줘","output":["go(-2.0, 4.5, -1.0)"]}
+{"instruction":"위치 (3.8, -1.2, 1.2)로 이동해주세요","output":["go(3.8, -1.2, 1.2)"]}
+{"instruction":"좌표 (0.5, -2.5, -2.0)으로 이동해줘","output":["go(0.5, -2.5, -2.0)"]}
+{"instruction":"위치 (-1.8, 1.1, 0.0)로 가","output":["go(-1.8, 1.1, 0.0)"]}
+{"instruction":"좌표 (4.2, 3.6, 2.5)로 이동 부탁해","output":["go(4.2, 3.6, 2.5)"]}
+{"instruction":"좌표 (-2.7, -2.2, -0.262)으로 가주세요","output":["go(-2.7, -2.2, -0.262)"]}
+{"instruction":"위치 (2.6, 0.4, 1.571)로 이동해","output":["go(2.6, 0.4, 1.571)"]}
+{"instruction":"좌표 (5.0, -3.0, -1.3)으로 이동해줘","output":["go(5.0, -3.0, -1.3)"]}
+{"instruction":"좌표 (-3.0, 2.7, 3.0)로 가줘","output":["go(-3.0, 2.7, 3.0)"]}
+{"instruction":"A구역으로 이동해서 책 찾아줘","output":["go('A')","detect('book')"]}
+{"instruction":"B구역에 가서 도구 탐지해","output":["go('B')","detect('tool')"]}
+{"instruction":"C구역으로 가서 컵 찾아주세요","output":["go('C')","detect('cup')"]}
+{"instruction":"D구역 이동하고 펜 탐지해줘","output":["go('D')","detect('pen')"]}
+{"instruction":"A구역까지 가서 가방 찾아","output":["go('A')","detect('bag')"]}
+{"instruction":"B구역으로 가서 병 탐지 부탁해","output":["go('B')","detect('bottle')"]}
+{"instruction":"C구역 이동 후 박스 찾아줘","output":["go('C')","detect('box')"]}
+{"instruction":"D구역에 가서 도구를 탐지해주세요","output":["go('D')","detect('tool')"]}
+{"instruction":"A구역으로 가서 펜 찾아줘","output":["go('A')","detect('pen')"]}
+{"instruction":"B구역까지 이동해서 컵 탐지해","output":["go('B')","detect('cup')"]}
+{"instruction":"C구역 가서 박스 탐지하고 그리퍼 열고 집어줘","output":["go('C')","detect('box')","open_gripper()","pick('box')"]}
+{"instruction":"D구역으로 이동해서 병 찾고 그리퍼 연 뒤 집어","output":["go('D')","detect('bottle')","open_gripper()","pick('bottle')"]}
+{"instruction":"A구역 가서 책 탐지하고 그리퍼 열어서 집어주세요","output":["go('A')","detect('book')","open_gripper()","pick('book')"]}
+{"instruction":"B구역 이동 후 도구 찾고 그리퍼 열고 집어줘","output":["go('B')","detect('tool')","open_gripper()","pick('tool')"]}
+{"instruction":"C구역에 가서 펜 탐지하고 그리퍼 열고 집어","output":["go('C')","detect('pen')","open_gripper()","pick('pen')"]}
+{"instruction":"D구역까지 가서 가방 찾고 그리퍼 연 다음 집어줘","output":["go('D')","detect('bag')","open_gripper()","pick('bag')"]}
+{"instruction":"A구역으로 이동해서 컵 찾고 그리퍼 열고 집어주세요","output":["go('A')","detect('cup')","open_gripper()","pick('cup')"]}
+{"instruction":"B구역으로 가서 병 탐지한 뒤 그리퍼 열고 집어","output":["go('B')","detect('bottle')","open_gripper()","pick('bottle')"]}
+{"instruction":"C구역 이동하고 책 찾은 다음 그리퍼 열고 집어줘","output":["go('C')","detect('book')","open_gripper()","pick('book')"]}
+{"instruction":"D구역 가서 박스 탐지하고 그리퍼 열어서 집어","output":["go('D')","detect('box')","open_gripper()","pick('box')"]}
+{"instruction":"앞으로 12cm 이동해줘","output":["move_base(0.12, 0, 0)"]}
+{"instruction":"뒤로 6cm 물러나","output":["move_base(-0.06, 0, 0)"]}
+{"instruction":"왼쪽으로 9cm 이동해주세요","output":["move_base(0, 0.09, 0)"]}
+{"instruction":"오른쪽으로 3cm만 움직여","output":["move_base(0, -0.03, 0)"]}
+{"instruction":"앞으로 18cm 가줘","output":["move_base(0.18, 0, 0)"]}
+{"instruction":"뒤쪽으로 15cm 이동해","output":["move_base(-0.15, 0, 0)"]}
+{"instruction":"제자리에서 반시계 방향으로 5도 회전해","output":["move_base(0, 0, 0.087)"]}
+{"instruction":"제자리에서 시계 방향으로 25도 돌려줘","output":["move_base(0, 0, -0.436)"]}
+{"instruction":"앞으로 7cm 이동하면서 시계 방향으로 15도 돌아","output":["move_base(0.07, 0, -0.262)"]}
+{"instruction":"오른쪽으로 10cm 움직이고 반시계 방향으로 20도 회전해줘","output":["move_base(0, -0.1, 0.349)"]}
+{"instruction":"엔드이펙터를 오른쪽으로 6cm 이동해","output":["move_ee(0.06, 0, 0, 0, 0, 0)"]}
+{"instruction":"엔드이펙터를 왼쪽으로 1cm 옮겨줘","output":["move_ee(-0.01, 0, 0, 0, 0, 0)"]}
+{"instruction":"매니퓰레이터를 앞으로 8cm 보내","output":["move_ee(0, 0.08, 0, 0, 0, 0)"]}
+{"instruction":"엔드이펙터를 뒤로 6cm 이동해주세요","output":["move_ee(0, -0.06, 0, 0, 0, 0)"]}
+{"instruction":"매니퓰레이터를 위로 9cm 올려줘","output":["move_ee(0, 0, 0.09, 0, 0, 0)"]}
+{"instruction":"엔드이펙터를 아래로 5cm 내려","output":["move_ee(0, 0, -0.05, 0, 0, 0)"]}
+{"instruction":"엔드이펙터를 오른쪽으로 4cm 옮기고 책 집어줘","output":["move_ee(0.04, 0, 0, 0, 0, 0)","pick('book')"]}
+{"instruction":"매니퓰레이터를 앞으로 6cm 조정하고 병 집어","output":["move_ee(0, 0.06, 0, 0, 0, 0)","pick('bottle')"]}
+{"instruction":"엔드이펙터를 위로 2cm 올린 다음 도구 집어줘","output":["move_ee(0, 0, 0.02, 0, 0, 0)","pick('tool')"]}
+{"instruction":"매니퓰레이터를 왼쪽으로 2cm 맞추고 가방 집어주세요","output":["move_ee(-0.02, 0, 0, 0, 0, 0)","pick('bag')"]}
+{"instruction":"베이스를 앞으로 4cm 이동한 뒤 펜 집어줘","output":["move_base(0.04, 0, 0)","pick('pen')"]}
+{"instruction":"로봇을 뒤로 7cm 빼고 컵 집어","output":["move_base(-0.07, 0, 0)","pick('cup')"]}
+{"instruction":"베이스를 오른쪽으로 6cm 맞춘 다음 병 집어줘","output":["move_base(0, -0.06, 0)","pick('bottle')"]}
+{"instruction":"왼쪽으로 4cm 이동하고 책 집어주세요","output":["move_base(0, 0.04, 0)","pick('book')"]}
+{"instruction":"엔드이펙터를 아래로 4cm 내리고 박스 집어","output":["move_ee(0, 0, -0.04, 0, 0, 0)","pick('box')"]}
+{"instruction":"매니퓰레이터를 오른쪽으로 5cm 조정 후 컵 집어줘","output":["move_ee(0.05, 0, 0, 0, 0, 0)","pick('cup')"]}
+{"instruction":"엔드이펙터를 앞으로 2cm 보낸 뒤 펜 집어","output":["move_ee(0, 0.02, 0, 0, 0, 0)","pick('pen')"]}
+{"instruction":"베이스를 반시계 방향으로 20도 돌리고 도구 집어줘","output":["move_base(0, 0, 0.349)","pick('tool')"]}
+{"instruction":"매니퓰레이터를 뒤로 3cm 빼고 가방 집어주세요","output":["move_ee(0, -0.03, 0, 0, 0, 0)","pick('bag')"]}
+{"instruction":"앞으로 9cm 이동한 다음 박스를 집어줘","output":["move_base(0.09, 0, 0)","pick('box')"]}
+{"instruction":"C구역으로 이동해서 컵 탐지하고 엔드이펙터를 위로 2cm 올린 뒤 집어줘","output":["go('C')","detect('cup')","move_ee(0, 0, 0.02, 0, 0, 0)","pick('cup')"]}
+{"instruction":"D구역 가서 펜 찾고 매니퓰레이터를 오른쪽으로 1cm 조정해서 집어","output":["go('D')","detect('pen')","move_ee(0.01, 0, 0, 0, 0, 0)","pick('pen')"]}
+{"instruction":"A구역 이동 후 박스 탐지하고 베이스를 앞으로 6cm 맞춘 다음 집어줘","output":["go('A')","detect('box')","move_base(0.06, 0, 0)","pick('box')"]}
+{"instruction":"B구역으로 가서 책 찾고 그리퍼 열고 엔드이펙터를 아래로 2cm 내려 집어","output":["go('B')","detect('book')","open_gripper()","move_ee(0, 0, -0.02, 0, 0, 0)","pick('book')"]}
+{"instruction":"C구역에서 병 탐지하고 오른쪽으로 3cm 조정 후 집어주세요","output":["go('C')","detect('bottle')","move_ee(0.03, 0, 0, 0, 0, 0)","pick('bottle')"]}
+{"instruction":"D구역 이동해서 도구 찾고 베이스를 시계 방향으로 15도 돌린 뒤 집어줘","output":["go('D')","detect('tool')","move_base(0, 0, -0.262)","pick('tool')"]}
+{"instruction":"A구역 가서 가방 탐지하고 그리퍼 열고 앞으로 4cm 조정해 집어","output":["go('A')","detect('bag')","open_gripper()","move_ee(0, 0.04, 0, 0, 0, 0)","pick('bag')"]}
+{"instruction":"B구역에 가서 컵 찾고 베이스를 오른쪽으로 5cm 옮긴 후 집어줘","output":["go('B')","detect('cup')","move_base(0, -0.05, 0)","pick('cup')"]}
+{"instruction":"C구역으로 이동해 병을 탐지하고 그리퍼 열고 왼쪽으로 2cm 맞춘 뒤 집어","output":["go('C')","detect('bottle')","open_gripper()","move_ee(-0.02, 0, 0, 0, 0, 0)","pick('bottle')"]}
+{"instruction":"D구역까지 가서 책 찾고 매니퓰레이터를 위로 3cm 올려 집어줘","output":["go('D')","detect('book')","move_ee(0, 0, 0.03, 0, 0, 0)","pick('book')"]}
+{"instruction":"그리퍼 좀 열어줘","output":["open_gripper()"]}
+{"instruction":"집게를 열어","output":["open_gripper()"]}
+{"instruction":"그리퍼를 열어주세요","output":["open_gripper()"]}
+{"instruction":"그리퍼 열림 상태로 만들어줘","output":["open_gripper()"]}
+{"instruction":"집게 오픈해","output":["open_gripper()"]}
+{"instruction":"물체 놓을 수 있게 그리퍼 열어줘","output":["open_gripper()"]}
+{"instruction":"손 부분을 벌려주세요","output":["open_gripper()"]}
+{"instruction":"그리퍼만 열어줘","output":["open_gripper()"]}
+{"instruction":"잡기 장치를 열어","output":["open_gripper()"]}
+{"instruction":"집게를 벌려줘","output":["open_gripper()"]}
+{"instruction":"베이스를 앞으로 3cm 이동하고 엔드이펙터를 아래로 2cm 내려줘","output":["move_base(0.03, 0, 0)","move_ee(0, 0, -0.02, 0, 0, 0)"]}
+{"instruction":"로봇을 왼쪽으로 8cm 옮긴 뒤 매니퓰레이터를 오른쪽으로 2cm 조정해","output":["move_base(0, 0.08, 0)","move_ee(0.02, 0, 0, 0, 0, 0)"]}
+{"instruction":"오른쪽으로 5cm 이동하고 엔드이펙터를 앞으로 4cm 보내줘","output":["move_base(0, -0.05, 0)","move_ee(0, 0.04, 0, 0, 0, 0)"]}
+{"instruction":"베이스를 뒤로 4cm 빼고 매니퓰레이터를 왼쪽으로 3cm 이동해","output":["move_base(-0.04, 0, 0)","move_ee(-0.03, 0, 0, 0, 0, 0)"]}
+{"instruction":"반시계 방향으로 10도 돌고 엔드이펙터를 위로 5cm 올려주세요","output":["move_base(0, 0, 0.175)","move_ee(0, 0, 0.05, 0, 0, 0)"]}
+{"instruction":"시계 방향으로 5도 회전한 다음 매니퓰레이터를 뒤로 2cm 빼줘","output":["move_base(0, 0, -0.087)","move_ee(0, -0.02, 0, 0, 0, 0)"]}
+{"instruction":"앞으로 11cm 이동하고 엔드이펙터를 오른쪽으로 1cm 맞춰","output":["move_base(0.11, 0, 0)","move_ee(0.01, 0, 0, 0, 0, 0)"]}
+{"instruction":"베이스를 오른쪽으로 9cm 옮기고 매니퓰레이터를 아래로 3cm 내려줘","output":["move_base(0, -0.09, 0)","move_ee(0, 0, -0.03, 0, 0, 0)"]}
+{"instruction":"왼쪽으로 7cm 이동하면서 반시계 방향으로 15도 돌고 엔드이펙터를 앞으로 2cm 보내","output":["move_base(0, 0.07, 0.262)","move_ee(0, 0.02, 0, 0, 0, 0)"]}
+{"instruction":"뒤로 6cm 이동하고 시계 방향으로 10도 돌린 뒤 엔드이펙터를 위로 2cm 올려줘","output":["move_base(-0.06, 0, -0.175)","move_ee(0, 0, 0.02, 0, 0, 0)"]}
+{"instruction":"A구역으로 이동해줘","output":["go('A')"]}
+{"instruction":"B구역으로 바로 이동해","output":["go('B')"]}
+{"instruction":"C구역에 가줘","output":["go('C')"]}
+{"instruction":"D구역으로 이동해주세요","output":["go('D')"]}
+{"instruction":"A구역까지 가","output":["go('A')"]}
+{"instruction":"B구역 쪽으로 가줘","output":["go('B')"]}
+{"instruction":"C구역까지 이동 부탁해","output":["go('C')"]}
+{"instruction":"D구역으로 가주세요","output":["go('D')"]}
+{"instruction":"A구역으로 이동해","output":["go('A')"]}
+{"instruction":"B구역에 도착해줘","output":["go('B')"]}
+{"instruction":"좌표 (-0.5, 2.8, 0.349)로 가줘","output":["go(-0.5, 2.8, 0.349)"]}
+{"instruction":"좌표 (3.1, -0.7, -0.524)으로 이동해","output":["go(3.1, -0.7, -0.524)"]}
+{"instruction":"위치 (1.0, 4.2, 1.047)로 이동해줘","output":["go(1.0, 4.2, 1.047)"]}
+{"instruction":"좌표 (-2.2, 3.3, -1.571)로 가주세요","output":["go(-2.2, 3.3, -1.571)"]}
+{"instruction":"위치 (4.8, 0.9, 0.175)로 이동해","output":["go(4.8, 0.9, 0.175)"]}
+{"instruction":"좌표 (2.4, -2.4, 2.8)으로 이동 부탁해","output":["go(2.4, -2.4, 2.8)"]}
+{"instruction":"좌표 (-1.4, -0.9, -2.6)로 이동해줘","output":["go(-1.4, -0.9, -2.6)"]}
+{"instruction":"위치 (0.2, 1.8, 0.785)로 가","output":["go(0.2, 1.8, 0.785)"]}
+{"instruction":"좌표 (3.7, 5.0, -0.349)으로 가줘","output":["go(3.7, 5.0, -0.349)"]}
+{"instruction":"좌표 (-3.0, 0.0, 1.8)로 이동해주세요","output":["go(-3.0, 0.0, 1.8)"]}
+{"instruction":"C구역으로 가서 도구 찾아줘","output":["go('C')","detect('tool')"]}
+{"instruction":"D구역 이동해서 가방 탐지해","output":["go('D')","detect('bag')"]}
+{"instruction":"A구역으로 이동 후 박스 찾아주세요","output":["go('A')","detect('box')"]}
+{"instruction":"B구역에 가서 책 탐지해줘","output":["go('B')","detect('book')"]}
+{"instruction":"C구역까지 가서 펜 찾아","output":["go('C')","detect('pen')"]}
+{"instruction":"D구역으로 가서 병 탐지 부탁해","output":["go('D')","detect('bottle')"]}
+{"instruction":"A구역 가서 컵을 찾아줘","output":["go('A')","detect('cup')"]}
+{"instruction":"B구역 이동하고 도구 탐지해","output":["go('B')","detect('tool')"]}
+{"instruction":"C구역에 가서 가방 찾아주세요","output":["go('C')","detect('bag')"]}
+{"instruction":"D구역까지 이동해서 박스 탐지해줘","output":["go('D')","detect('box')"]}
+{"instruction":"C구역 가서 컵 찾고 그리퍼 열고 집어","output":["go('C')","detect('cup')","open_gripper()","pick('cup')"]}
+{"instruction":"D구역 이동해서 펜 탐지하고 그리퍼 열어 집어줘","output":["go('D')","detect('pen')","open_gripper()","pick('pen')"]}
+{"instruction":"A구역으로 가서 가방 찾고 그리퍼 연 뒤 집어주세요","output":["go('A')","detect('bag')","open_gripper()","pick('bag')"]}
+{"instruction":"B구역까지 이동해서 도구 탐지하고 그리퍼 열고 집어","output":["go('B')","detect('tool')","open_gripper()","pick('tool')"]}
+{"instruction":"C구역에 가서 병 찾고 그리퍼 열어서 집어줘","output":["go('C')","detect('bottle')","open_gripper()","pick('bottle')"]}
+{"instruction":"D구역으로 이동 후 책 탐지하고 그리퍼 열고 집어","output":["go('D')","detect('book')","open_gripper()","pick('book')"]}
+{"instruction":"A구역 이동해서 박스 찾고 그리퍼 연 다음 집어줘","output":["go('A')","detect('box')","open_gripper()","pick('box')"]}
+{"instruction":"B구역으로 가서 컵 탐지하고 그리퍼 열고 집어주세요","output":["go('B')","detect('cup')","open_gripper()","pick('cup')"]}
+{"instruction":"C구역으로 이동하고 펜 찾은 뒤 그리퍼 열고 집어줘","output":["go('C')","detect('pen')","open_gripper()","pick('pen')"]}
+{"instruction":"D구역 가서 도구 탐지한 다음 그리퍼 열고 집어","output":["go('D')","detect('tool')","open_gripper()","pick('tool')"]}
+{"instruction":"앞으로 2cm만 이동해","output":["move_base(0.02, 0, 0)"]}
+{"instruction":"뒤로 12cm 이동해줘","output":["move_base(-0.12, 0, 0)"]}
+{"instruction":"왼쪽으로 20cm 가주세요","output":["move_base(0, 0.2, 0)"]}
+{"instruction":"오른쪽으로 8cm 이동 부탁해","output":["move_base(0, -0.08, 0)"]}
+{"instruction":"앞쪽으로 15cm 움직여","output":["move_base(0.15, 0, 0)"]}
+{"instruction":"뒤쪽으로 2cm만 빼줘","output":["move_base(-0.02, 0, 0)"]}
+{"instruction":"반시계 방향으로 25도 회전해줘","output":["move_base(0, 0, 0.436)"]}
+{"instruction":"시계 방향으로 30도 돌아","output":["move_base(0, 0, -0.524)"]}
+{"instruction":"앞으로 5cm 가면서 반시계 방향으로 5도 회전해","output":["move_base(0.05, 0, 0.087)"]}
+{"instruction":"왼쪽으로 10cm 이동하고 시계 방향으로 15도 돌려줘","output":["move_base(0, 0.1, -0.262)"]}
+{"instruction":"엔드이펙터를 오른쪽으로 8cm 옮겨줘","output":["move_ee(0.08, 0, 0, 0, 0, 0)"]}
+{"instruction":"매니퓰레이터를 왼쪽으로 6cm 이동해","output":["move_ee(-0.06, 0, 0, 0, 0, 0)"]}
+{"instruction":"엔드이펙터 앞으로 1cm만 보내","output":["move_ee(0, 0.01, 0, 0, 0, 0)"]}
+{"instruction":"매니퓰레이터를 뒤로 4cm 빼줘","output":["move_ee(0, -0.04, 0, 0, 0, 0)"]}
+{"instruction":"엔드이펙터를 위로 10cm 올려주세요","output":["move_ee(0, 0, 0.1, 0, 0, 0)"]}
+{"instruction":"매니퓰레이터를 아래로 8cm 내려줘","output":["move_ee(0, 0, -0.08, 0, 0, 0)"]}
+{"instruction":"엔드이펙터를 오른쪽으로 1cm 조정하고 병 집어줘","output":["move_ee(0.01, 0, 0, 0, 0, 0)","pick('bottle')"]}
+{"instruction":"매니퓰레이터를 앞으로 7cm 이동하고 컵 집어","output":["move_ee(0, 0.07, 0, 0, 0, 0)","pick('cup')"]}
+{"instruction":"엔드이펙터를 아래로 6cm 내린 뒤 책 집어줘","output":["move_ee(0, 0, -0.06, 0, 0, 0)","pick('book')"]}
+{"instruction":"매니퓰레이터를 왼쪽으로 4cm 맞추고 박스 집어주세요","output":["move_ee(-0.04, 0, 0, 0, 0, 0)","pick('box')"]}
+{"instruction":"베이스를 앞으로 13cm 맞추고 컵 집어줘","output":["move_base(0.13, 0, 0)","pick('cup')"]}
+{"instruction":"로봇을 오른쪽으로 2cm 이동한 뒤 펜 집어","output":["move_base(0, -0.02, 0)","pick('pen')"]}
+{"instruction":"왼쪽으로 12cm 이동하고 가방 집어줘","output":["move_base(0, 0.12, 0)","pick('bag')"]}
+{"instruction":"뒤로 9cm 빼고 도구 집어주세요","output":["move_base(-0.09, 0, 0)","pick('tool')"]}
+{"instruction":"엔드이펙터를 위로 4cm 올리고 병 집어","output":["move_ee(0, 0, 0.04, 0, 0, 0)","pick('bottle')"]}
+{"instruction":"매니퓰레이터를 오른쪽으로 7cm 이동 후 책 집어줘","output":["move_ee(0.07, 0, 0, 0, 0, 0)","pick('book')"]}
+{"instruction":"엔드이펙터를 뒤로 2cm 빼고 컵 집어","output":["move_ee(0, -0.02, 0, 0, 0, 0)","pick('cup')"]}
+{"instruction":"베이스를 시계 방향으로 25도 돌린 뒤 박스 집어줘","output":["move_base(0, 0, -0.436)","pick('box')"]}
+{"instruction":"엔드이펙터를 아래로 3cm 조정하고 도구 집어","output":["move_ee(0, 0, -0.03, 0, 0, 0)","pick('tool')"]}
+{"instruction":"앞으로 6cm 이동하고 펜 집어주세요","output":["move_base(0.06, 0, 0)","pick('pen')"]}
+{"instruction":"A구역으로 가서 펜 탐지하고 엔드이펙터를 아래로 1cm 내려 집어줘","output":["go('A')","detect('pen')","move_ee(0, 0, -0.01, 0, 0, 0)","pick('pen')"]}
+{"instruction":"B구역 이동 후 가방 찾고 매니퓰레이터를 앞으로 5cm 보내서 집어","output":["go('B')","detect('bag')","move_ee(0, 0.05, 0, 0, 0, 0)","pick('bag')"]}
+{"instruction":"C구역에 가서 도구 탐지하고 그리퍼 열고 오른쪽으로 2cm 조정해 집어줘","output":["go('C')","detect('tool')","open_gripper()","move_ee(0.02, 0, 0, 0, 0, 0)","pick('tool')"]}
+{"instruction":"D구역으로 이동해서 컵 찾고 베이스를 앞으로 4cm 이동한 뒤 집어주세요","output":["go('D')","detect('cup')","move_base(0.04, 0, 0)","pick('cup')"]}
+{"instruction":"A구역 가서 책 탐지하고 그리퍼 열고 위로 2cm 올려 집어","output":["go('A')","detect('book')","open_gripper()","move_ee(0, 0, 0.02, 0, 0, 0)","pick('book')"]}
+{"instruction":"B구역으로 이동해 병 찾고 왼쪽으로 3cm 조정한 다음 집어줘","output":["go('B')","detect('bottle')","move_ee(-0.03, 0, 0, 0, 0, 0)","pick('bottle')"]}
+{"instruction":"C구역까지 가서 박스 탐지하고 베이스를 반시계 방향으로 10도 돌려 집어","output":["go('C')","detect('box')","move_base(0, 0, 0.175)","pick('box')"]}
+{"instruction":"D구역 이동 후 펜 찾고 그리퍼 열고 엔드이펙터를 앞으로 2cm 보내 집어줘","output":["go('D')","detect('pen')","open_gripper()","move_ee(0, 0.02, 0, 0, 0, 0)","pick('pen')"]}
+{"instruction":"A구역에서 가방 탐지하고 베이스를 오른쪽으로 6cm 맞춘 뒤 집어주세요","output":["go('A')","detect('bag')","move_base(0, -0.06, 0)","pick('bag')"]}
+{"instruction":"B구역으로 가서 도구 찾고 매니퓰레이터를 아래로 4cm 내려 집어","output":["go('B')","detect('tool')","move_ee(0, 0, -0.04, 0, 0, 0)","pick('tool')"]}
+{"instruction":"그리퍼 열어주세요","output":["open_gripper()"]}
+{"instruction":"집게 열림 동작 해줘","output":["open_gripper()"]}
+{"instruction":"그리퍼를 벌려줘","output":["open_gripper()"]}
+{"instruction":"잡는 장치를 열어주세요","output":["open_gripper()"]}
+{"instruction":"그리퍼를 오픈 상태로 바꿔","output":["open_gripper()"]}
+{"instruction":"집게를 열어줘","output":["open_gripper()"]}
+{"instruction":"엔드이펙터 집게를 열어주세요","output":["open_gripper()"]}
+{"instruction":"그리퍼 개방해줘","output":["open_gripper()"]}
+{"instruction":"물체를 놓기 위해 그리퍼 열어","output":["open_gripper()"]}
+{"instruction":"집기 전에 집게를 벌려줘","output":["open_gripper()"]}
+{"instruction":"베이스를 앞으로 14cm 이동하고 엔드이펙터를 왼쪽으로 2cm 옮겨줘","output":["move_base(0.14, 0, 0)","move_ee(-0.02, 0, 0, 0, 0, 0)"]}
+{"instruction":"로봇을 뒤로 8cm 빼고 매니퓰레이터를 앞으로 3cm 보내","output":["move_base(-0.08, 0, 0)","move_ee(0, 0.03, 0, 0, 0, 0)"]}
+{"instruction":"오른쪽으로 11cm 이동하고 엔드이펙터를 위로 2cm 올려주세요","output":["move_base(0, -0.11, 0)","move_ee(0, 0, 0.02, 0, 0, 0)"]}
+{"instruction":"왼쪽으로 3cm 이동한 뒤 매니퓰레이터를 아래로 5cm 내려","output":["move_base(0, 0.03, 0)","move_ee(0, 0, -0.05, 0, 0, 0)"]}
+{"instruction":"베이스를 반시계 방향으로 30도 돌리고 엔드이펙터를 오른쪽으로 4cm 이동해줘","output":["move_base(0, 0, 0.524)","move_ee(0.04, 0, 0, 0, 0, 0)"]}
+{"instruction":"시계 방향으로 20도 돌고 매니퓰레이터를 왼쪽으로 1cm 조정해","output":["move_base(0, 0, -0.349)","move_ee(-0.01, 0, 0, 0, 0, 0)"]}
+{"instruction":"앞으로 4cm 가고 엔드이펙터를 뒤로 3cm 빼줘","output":["move_base(0.04, 0, 0)","move_ee(0, -0.03, 0, 0, 0, 0)"]}
+{"instruction":"뒤로 10cm 이동하고 매니퓰레이터를 오른쪽으로 5cm 맞춰","output":["move_base(-0.1, 0, 0)","move_ee(0.05, 0, 0, 0, 0, 0)"]}
+{"instruction":"왼쪽으로 9cm 움직이면서 시계 방향으로 5도 돌고 엔드이펙터를 아래로 2cm 내려줘","output":["move_base(0, 0.09, -0.087)","move_ee(0, 0, -0.02, 0, 0, 0)"]}
+{"instruction":"오른쪽으로 6cm 이동하면서 반시계 방향으로 25도 돌고 매니퓰레이터를 앞으로 1cm 보내","output":["move_base(0, -0.06, 0.436)","move_ee(0, 0.01, 0, 0, 0, 0)"]}
