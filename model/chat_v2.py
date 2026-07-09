@@ -14,7 +14,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'ros2_ws', 'src', 
 from ros2_bridge import send_to_robot_ros2, shutdown_ros
 
 BASE_MODEL = "Qwen/Qwen2.5-7B-Instruct"
-LORA_PATH  = os.path.join(os.path.dirname(__file__), "qwen-robot-v2")
+LORA_PATH  = LORA_PATH = "sugarpepper99/qwen-robot-lora-v2"
 
 # ROS2 토픽 이름 — 확정 시 수정
 TOPIC_BASE_POSE = "/robot/base_pose"   # geometry_msgs/Pose2D: 글로벌 기준 모바일 베이스 (x, y, theta)

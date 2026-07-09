@@ -1,0 +1,100 @@
+================================================================
+  ROS2 로봇 상태 퍼블리셔 구현용 LLM 프롬프트
+================================================================
+
+
+================================================================
+[SYSTEM PROMPT]
+================================================================
+
+당신은 ROS2(Robot Operating System 2) 전문 개발자입니다.
+Python 기반 ROS2 Humble 환경에서 로봇 상태를 퍼블리시하는 노드를 구현합니다.
+
+
+================================================================
+[USER PROMPT]
+================================================================
+
+아래 사양에 맞는 ROS2 퍼블리셔 노드를 Python으로 구현해줘.
+
+## 배경
+
+LLM 기반 로봇 명령 인터페이스(chat_v2.py)가 아래 두 토픽을 구독하고 있어.
+로봇의 현재 상태를 이 토픽으로 퍼블리시하는 노드가 필요해.
+
+## 퍼블리시해야 할 토픽
+
+### 토픽 1: 모바일 베이스 위치
+- 토픽명: /robot/base_pose
+- 메시지 타입: geometry_msgs/msg/Pose2D
+- 좌표계: 글로벌 좌표계 (map frame) 기준
+- 필드:
+  - x: 글로벌 기준 x 위치 (미터)
+  - y: 글로벌 기준 y 위치 (미터)
+  - theta: 글로벌 기준 yaw 각도 (라디안, +값=반시계방향)
+
+### 토픽 2: 매니퓰레이터 엔드이펙터 위치
+- 토픽명: /robot/ee_pose
+- 메시지 타입: geometry_msgs/msg/Pose
+- 좌표계: 모바일 로봇 베이스 프레임 기준
+- 필드:
+  - position.x, position.y, position.z: 베이스 기준 EE 위치 (미터)
+  - orientation.x, orientation.y, orientation.z, orientation.w: EE 자세 (quaternion)
+
+## 구독자가 처리하는 방식 (참고용)
+
+```python
+# 베이스 구독 콜백
+lambda msg: update_base(msg.x, msg.y, msg.theta)
+
+# EE 구독 콜백 (quaternion → rpy 내부 변환)
+def _ee_cb(msg):
+    r, p, y = _quat_to_rpy(
+        msg.orientation.x, msg.orientation.y,
+        msg.orientation.z, msg.orientation.w
+    )
+    update_ee(msg.position.x, msg.position.y, msg.position.z, r, p, y)
+```
+
+## 구현 조건
+
+1. ROS2 Humble, Python 3.10 환경
+2. 퍼블리시 주기: 20Hz (타이머 0.05초)
+3. 베이스 위치는 /odom 또는 /amcl_pose 토픽에서 읽어올 것
+   (사용 가능한 오도메트리 소스를 파라미터로 선택 가능하게 해줘)
+4. EE 위치는 tf2를 통해 base_link 기준 end_effector_link transform에서 읽어올 것
+   (링크 이름은 파라미터로 설정 가능하게 해줘)
+5. nav_msgs/Odometry의 quaternion → Pose2D의 theta(yaw) 변환 포함
+6. tf2 lookupTransform 실패 시 에러 로그 출력 후 스킵 (노드 종료 안 함)
+7. 노드 이름: robot_state_publisher
+8. 파라미터:
+   - odom_topic (default: '/odom')
+   - base_frame (default: 'base_link')
+   - ee_frame (default: 'end_effector_link')
+   - publish_rate (default: 20.0)
+
+## 추가 요청
+
+- 위 노드를 launch 파일로 실행할 수 있는 Python launch 파일도 작성해줘
+- 패키지명: robot_state_publisher_pkg
+- 필요한 package.xml, setup.py 구조도 알려줘
+
+
+================================================================
+[사용 방법]
+================================================================
+
+위 프롬프트를 ChatGPT 또는 Claude에 붙여넣으면
+완성된 ROS2 퍼블리셔 노드 코드를 받을 수 있습니다.
+
+생성된 코드에서 반드시 확인할 사항:
+1. 토픽명이 정확히 /robot/base_pose, /robot/ee_pose 인지
+2. Pose2D 메시지의 theta가 라디안 단위인지
+3. Pose 메시지의 orientation이 quaternion(xyzw) 형식인지
+4. EE 좌표계가 모바일 베이스(base_link) 기준인지
+
+실제 로봇 환경에 따라 수정이 필요한 부분:
+- odom_topic: 실제 오도메트리 토픽명
+- base_frame: 실제 베이스 링크 이름
+- ee_frame: 실제 엔드이펙터 링크 이름
+================================================================
